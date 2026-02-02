@@ -64,7 +64,7 @@ export default function GalleryPreview() {
                             key={project.id}
                             className={`relative group overflow-hidden rounded-xl border border-slate-800 bg-slate-800 w-full ${project.size}`}
                         >
-                            {/* Attēls - Spilgts, bez overlay */}
+                            {/* Attēls */}
                             <Image
                                 src={project.src}
                                 alt={project.title}
@@ -72,30 +72,32 @@ export default function GalleryPreview() {
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
 
-                            {/* INFO BLOKS - Tikai tekstam */}
-                            {/* bg-slate-950/90 -> Tumšs fons, gandrīz necaurspīdīgs
-                  backdrop-blur-sm -> Neliels "stikla" efekts fonam
-                  border-t -> Smalka līnija atdalīšanai
+                            {/* INFO KARTĪTE - Floating Glass Effect */}
+                            {/* 1. absolute bottom-4 left-4 right-4 -> Atkāpes no malām (levitē)
+                  2. bg-slate-950/60 -> 60% caurspīdīgs melns
+                  3. backdrop-blur-md -> Matēts stikls
+                  4. border border-white/10 -> Smalka gaiša maliņa
               */}
-                            <div className="absolute bottom-0 left-0 w-full bg-slate-950/90 backdrop-blur-sm border-t border-slate-800 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <div className="absolute bottom-4 left-4 right-4 bg-slate-950/60 backdrop-blur-md border border-white/10 p-5 rounded-xl transition-all duration-300 group-hover:bg-slate-950/80 group-hover:-translate-y-1">
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">
+                                        <p className="text-xs font-bold text-red-400 uppercase tracking-wider mb-1 drop-shadow-sm">
                                             {project.category}
                                         </p>
-                                        <h3 className="text-lg font-bold text-white mb-1 leading-tight">
+                                        <h3 className="text-lg font-bold text-white mb-1 leading-tight drop-shadow-md">
                                             {project.title}
                                         </h3>
                                     </div>
-                                    {/* Bultiņa stūrī */}
-                                    <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary transition-colors duration-300">
-                                        <ArrowRight className="w-5 h-5 text-primary group-hover:text-white" />
+
+                                    {/* Bultiņa */}
+                                    <div className="bg-white/10 p-2 rounded-full group-hover:bg-primary transition-colors duration-300">
+                                        <ArrowRight className="w-5 h-5 text-white" />
                                     </div>
                                 </div>
 
-                                {/* Lokācija - parādās tikai pie hover, lai nepārslogotu skatu */}
-                                <div className="flex items-center text-slate-400 text-xs font-medium mt-2 opacity-0 h-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-300">
-                                    <MapPin className="w-3 h-3 mr-1 text-slate-500" />
+                                {/* Lokācija - izslīd ārā pie hover */}
+                                <div className="flex items-center text-slate-300 text-xs font-medium mt-0 opacity-0 h-0 overflow-hidden group-hover:h-auto group-hover:mt-2 group-hover:opacity-100 transition-all duration-300">
+                                    <MapPin className="w-3 h-3 mr-1 text-red-400" />
                                     {project.location}
                                 </div>
                             </div>

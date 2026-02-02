@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 
-// Dati - VISUR izmantojam vienu IS JUMTI bildi (pagaidām)
 const heroSlides = [
     {
         id: 1,
@@ -30,7 +29,6 @@ const heroSlides = [
         category: "Daudzdzīvokļu Nami",
         title: "Renovācija biedrībām",
         description: "Pilna cikla siltināšana un jumta maiņa bez slēptām izmaksām.",
-        // Pagaidām liekam to pašu bildi, lai nav kļūdu. Nomainiet saiti, kad būs cita bilde.
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
         alt: "Daudzdzīvokļu mājas jumta renovācija",
     },
@@ -39,7 +37,6 @@ const heroSlides = [
         category: "Komercobjekti",
         title: "Industriālie Risinājumi",
         description: "Lielu platību jumtu ieklāšana ar precīziem termiņiem.",
-        // Pagaidām liekam to pašu bildi, lai nav kļūdu. Nomainiet saiti, kad būs cita bilde.
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
         alt: "Jumiķi uz komercēkas jumta",
     },
@@ -55,7 +52,7 @@ export default function Hero() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
 
-                    {/* KREISĀ PUSE: Saturs */}
+                    {/* KREISĀ PUSE */}
                     <div className="flex flex-col space-y-6 lg:space-y-8 order-2 lg:order-1">
                         <div className="space-y-4">
                             <div className="inline-flex items-center space-x-2 text-sm font-semibold text-red-600">
@@ -109,23 +106,34 @@ export default function Hero() {
                             <CarouselContent>
                                 {heroSlides.map((slide) => (
                                     <CarouselItem key={slide.id}>
-                                        {/* Bilde pielāgota IS JUMTI formātam (aspect-[3/2]) */}
-                                        <div className="relative aspect-[3/2] w-full overflow-hidden rounded-xl shadow-lg bg-gray-100">
+                                        <div className="relative aspect-[3/2] w-full overflow-hidden rounded-xl shadow-lg bg-gray-100 group">
+
+                                            {/* Attēls */}
                                             <Image
                                                 src={slide.src}
                                                 alt={slide.alt}
                                                 fill
                                                 priority={slide.id === 1}
-                                                className="object-cover"
+                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
 
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                                            <div className="absolute bottom-0 left-0 p-6 text-white">
-                                                <p className="text-xs font-bold uppercase tracking-wider text-red-400 mb-1">
+                                            {/* IZMAIŅA: Caurspīdīgāks stikla efekts */}
+                                            {/* 1. bg-slate-950/60 -> 60% opacity (bija 90%)
+                          2. backdrop-blur-md -> Stiprāks izplūdums, lai teksts būtu lasāms
+                          3. border-white/10 -> Smalka gaiša līnija kontūrai
+                      */}
+                                            <div className="absolute bottom-4 left-4 right-4 md:left-6 md:right-6 bg-slate-950/60 backdrop-blur-md border border-white/10 p-5 rounded-xl shadow-2xl transition-all duration-300 group-hover:bg-slate-950/70">
+                                                <p className="text-xs font-bold uppercase tracking-wider text-red-400 mb-1 drop-shadow-sm">
                                                     {slide.category}
                                                 </p>
-                                                <h3 className="text-xl font-bold">{slide.title}</h3>
+                                                <h3 className="text-xl font-bold text-white leading-tight mb-1 drop-shadow-md">
+                                                    {slide.title}
+                                                </h3>
+                                                <p className="text-slate-200 text-sm line-clamp-2 drop-shadow-sm">
+                                                    {slide.description}
+                                                </p>
                                             </div>
+
                                         </div>
                                     </CarouselItem>
                                 ))}
