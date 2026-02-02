@@ -1,8 +1,10 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ShieldCheck, Clock4 } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
+import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 
 import {
     Carousel,
@@ -11,114 +13,131 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
 
-const heroImages = [
+// Dati
+const heroSlides = [
     {
+        id: 1,
+        category: "Privātmājas",
+        title: "Jumti, kas sargā ģimeni",
+        description: "Metāla un dakstiņu jumtu montāža ar 30 gadu garantiju.",
         src: "https://images.unsplash.com/photo-1632759988104-29d4c90651bc?q=80&w=2940&auto=format&fit=crop",
-        alt: "Jauns metāla jumts privātmājai",
+        alt: "Renovēts privātmājas jumts",
     },
     {
+        id: 2,
+        category: "Daudzdzīvokļu Nami",
+        title: "Renovācija biedrībām",
+        description: "Pilna cikla siltināšana un jumta maiņa bez slēptām izmaksām.",
         src: "https://images.unsplash.com/photo-1518463892881-d587bf2c296a?q=80&w=2894&auto=format&fit=crop",
-        alt: "Dakstiņu jumta renovācija",
+        alt: "Daudzdzīvokļu mājas jumta renovācija",
     },
     {
+        id: 3,
+        category: "Komercobjekti",
+        title: "Industriālie Risinājumi",
+        description: "Lielu platību jumtu ieklāšana ar precīziem termiņiem.",
         src: "https://images.unsplash.com/photo-1628120616143-693354474776?q=80&w=2940&auto=format&fit=crop",
-        alt: "Jumiķi darba procesā",
+        alt: "Jumiķi uz komercēkas jumta",
     },
 ];
 
 export default function Hero() {
+    const plugin = React.useRef(
+        Autoplay({ delay: 5000, stopOnInteraction: true })
+    );
+
     return (
-        <section className="relative bg-white overflow-hidden">
-            {/* Dekoratīvais fona elements */}
-            <div className="absolute inset-y-0 right-0 w-1/2 bg-gray-50 hidden lg:block" />
+        <section className="w-full bg-white py-12 lg:py-20">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div className="flex flex-col lg:flex-row lg:items-stretch min-h-[600px]">
+                    {/* KREISĀ PUSE: Saturs */}
+                    <div className="flex flex-col space-y-6 lg:space-y-8 order-2 lg:order-1">
+                        <div className="space-y-4">
+                            {/* Vienkāršs, profesionāls badge */}
+                            <div className="inline-flex items-center space-x-2 text-sm font-semibold text-red-600">
+                                <ShieldCheck className="h-5 w-5" />
+                                <span>Sertificēti jumiķi Rīgā un Pierīgā</span>
+                            </div>
 
-                    {/* KREISĀ PUSE - TEKSTS */}
-                    <div className="w-full lg:w-1/2 py-16 lg:py-24 flex flex-col justify-center relative z-10 bg-white lg:pr-12">
+                            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
+                                Jūsu mājas jumts — <span className="text-red-600">mūsu atbildība.</span>
+                            </h1>
 
-                        <span className="inline-block mb-4 text-sm font-bold uppercase tracking-widest text-red-600">
-                            Sertificēti Jumiķi Rīgā & Pierīgā
-                        </span>
+                            <p className="max-w-[600px] text-lg text-gray-600 leading-relaxed">
+                                Mēs strādājam bez "haltūrām". Nodrošinām pilna cikla jumtu izbūvi,
+                                siltināšanu un oficiālu garantiju līdz 30 gadiem.
+                            </p>
 
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-                            Jūsu mājas jumts — mūsu <span className="text-red-600 underline decoration-red-600/30 decoration-4 underline-offset-4">mūža atbildība</span>.
-                        </h1>
-
-                        <p className="text-lg text-gray-600 mb-10 leading-relaxed max-w-xl">
-                            Nekādu "haltūru". Mēs nodrošinām pilna cikla jumtu izbūvi un renovāciju ar oficiālu līgumu, precīzu tāmi un garantiju, kas reāli strādā.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Link
-                                href="/cenas"
-                                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-red-600 rounded-md hover:bg-red-700 transition-all active:scale-[0.98]"
-                            >
-                                Aprēķināt Izmaksas
-                                <ArrowRight className="w-5 h-5 ml-2" />
-                            </Link>
-
-                            <Link
-                                href="/projekti"
-                                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-gray-900 bg-white border-2 border-gray-200 rounded-md hover:border-red-600 hover:text-red-600 transition-all"
-                            >
-                                Mūsu Objekti
-                            </Link>
+                            {/* Saraksts ar priekšrocībām (Trust signals) */}
+                            <ul className="grid gap-2 py-2 text-gray-600">
+                                <li className="flex items-center gap-2">
+                                    <Check className="h-4 w-4 text-red-600" /> Bezmaksas objekta apsekošana
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <Check className="h-4 w-4 text-red-600" /> Tāme 24 stundu laikā
+                                </li>
+                            </ul>
                         </div>
 
-                        {/* Trust Bar */}
-                        <div className="mt-12 pt-8 border-t border-gray-100 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                            <div className="flex items-center gap-3">
-                                <div className="flex-shrink-0 p-2 bg-red-50 rounded-lg">
-                                    <ShieldCheck className="w-6 h-6 text-red-600" />
-                                </div>
-                                <span className="text-sm font-bold text-gray-900">30 gadu garantija</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <div className="flex-shrink-0 p-2 bg-red-50 rounded-lg">
-                                    <Clock4 className="w-6 h-6 text-red-600" />
-                                </div>
-                                <span className="text-sm font-bold text-gray-900">Tāme 24h laikā</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <div className="flex-shrink-0 p-2 bg-red-50 rounded-lg">
-                                    <CheckCircle2 className="w-6 h-6 text-red-600" />
-                                </div>
-                                <span className="text-sm font-bold text-gray-900">Sertificēti materiāli</span>
-                            </div>
+                        {/* Pogas - klasiskas un skaidras */}
+                        <div className="flex flex-col sm:flex-row gap-3">
+                            <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold text-base h-12 px-8 rounded-md">
+                                <Link href="/cenas">
+                                    Aprēķināt Izmaksas
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                            </Button>
+                            <Button asChild variant="outline" size="lg" className="border-gray-300 hover:bg-gray-50 text-base h-12 px-8 rounded-md">
+                                <Link href="/galerija">
+                                    Skatīt Paveikto
+                                </Link>
+                            </Button>
                         </div>
                     </div>
 
-                    {/* LABĀ PUSE - CAROUSEL (MANUAL) */}
-                    <div className="w-full lg:w-1/2 relative lg:ml-[-1px] min-h-[400px] lg:min-h-full group">
-                        <div className="h-full w-full relative z-10 lg:rounded-bl-[80px] overflow-hidden shadow-2xl">
+                    {/* LABĀ PUSE: Attēlu karuselis (Tīrāks dizains) */}
+                    <div className="order-1 lg:order-2 w-full">
+                        <Carousel
+                            plugins={[plugin.current]}
+                            className="w-full"
+                            onMouseEnter={plugin.current.stop}
+                            onMouseLeave={plugin.current.reset}
+                            opts={{ loop: true }}
+                        >
+                            <CarouselContent>
+                                {heroSlides.map((slide) => (
+                                    <CarouselItem key={slide.id}>
+                                        <div className="relative aspect-[4/3] lg:aspect-square xl:aspect-[4/3] w-full overflow-hidden rounded-xl shadow-lg bg-gray-100">
+                                            <Image
+                                                src={slide.src}
+                                                alt={slide.alt}
+                                                fill
+                                                priority={slide.id === 1}
+                                                className="object-cover"
+                                            />
 
-                            <Carousel className="w-full h-full">
-                                <CarouselContent className="h-full ml-0">
-                                    {heroImages.map((image, index) => (
-                                        <CarouselItem key={index} className="pl-0 h-full">
-                                            <div className="relative w-full h-full min-h-[400px] lg:min-h-[600px]">
-                                                <img
-                                                    src={image.src}
-                                                    alt={image.alt}
-                                                    className="absolute inset-0 w-full h-full object-cover"
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                                            {/* Minimāls info panelis apakšā */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                                            <div className="absolute bottom-0 left-0 p-6 text-white">
+                                                <p className="text-xs font-bold uppercase tracking-wider text-red-400 mb-1">
+                                                    {slide.category}
+                                                </p>
+                                                <h3 className="text-xl font-bold">{slide.title}</h3>
                                             </div>
-                                        </CarouselItem>
-                                    ))}
-                                </CarouselContent>
+                                        </div>
+                                    </CarouselItem>
+                                ))}
+                            </CarouselContent>
 
-                                {/* Bultiņas - parādās, kad uzbrauc ar peli */}
-                                <CarouselPrevious className="left-4 bg-white/80 hover:bg-white text-gray-900 border-none opacity-0 group-hover:opacity-100 transition-opacity" />
-                                <CarouselNext className="right-4 bg-white/80 hover:bg-white text-gray-900 border-none opacity-0 group-hover:opacity-100 transition-opacity" />
-                            </Carousel>
-
-                            {/* Sarkans akcenta bloks zem karuseļa */}
-                            <div className="absolute -bottom-6 -left-6 w-64 h-64 bg-red-600 hidden lg:block -z-10 rounded-bl-[80px]"></div>
-                        </div>
+                            {/* Navigācija apakšā pa labi - neuzkrītoša */}
+                            <div className="hidden lg:flex absolute -bottom-12 right-0 gap-2">
+                                <CarouselPrevious className="static translate-y-0 border-gray-300 hover:bg-gray-100" />
+                                <CarouselNext className="static translate-y-0 border-gray-300 hover:bg-gray-100" />
+                            </div>
+                        </Carousel>
                     </div>
 
                 </div>
