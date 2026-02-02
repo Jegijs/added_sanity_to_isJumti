@@ -34,7 +34,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
+        hostname: "www.isjumti.lv", // <--- Pievienojiet šo rindu
       },
     ],
   },
