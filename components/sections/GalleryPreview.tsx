@@ -12,7 +12,8 @@ const projects = [
         category: "Metāla Dakstiņš",
         location: "Mārupe, Pierīga",
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
-        size: "col-span-1 md:col-span-2 md:row-span-2 h-[350px] md:h-full",
+        // IZMAIŅA: Mobilajā palielināts augstums uz h-[400px], lai teksts neaizsedz bildi
+        size: "col-span-1 md:col-span-2 md:row-span-2 h-[400px] md:h-full",
     },
     {
         id: 2,
@@ -20,7 +21,8 @@ const projects = [
         category: "Kausējamais Jumts",
         location: "Rīga, Centrs",
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
-        size: "col-span-1 md:col-span-1 md:row-span-1 h-[300px] md:h-full",
+        // IZMAIŅA: Mobilajā h-[350px]
+        size: "col-span-1 md:col-span-1 md:row-span-1 h-[350px] md:h-full",
     },
     {
         id: 3,
@@ -28,7 +30,8 @@ const projects = [
         category: "Valcprofils",
         location: "Jelgava",
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
-        size: "col-span-1 md:col-span-1 md:row-span-1 h-[300px] md:h-full",
+        // IZMAIŅA: Mobilajā h-[350px]
+        size: "col-span-1 md:col-span-1 md:row-span-1 h-[350px] md:h-full",
     },
 ];
 
@@ -72,33 +75,32 @@ export default function GalleryPreview() {
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
 
-                            {/* INFO KARTĪTE - Floating Glass Effect */}
-                            {/* 1. absolute bottom-4 left-4 right-4 -> Atkāpes no malām (levitē)
-                  2. bg-slate-950/60 -> 60% caurspīdīgs melns
-                  3. backdrop-blur-md -> Matēts stikls
-                  4. border border-white/10 -> Smalka gaiša maliņa
+                            {/* INFO KARTĪTE - Pielāgota, lai neaizsedz bildi */}
+                            {/* 1. h-auto -> Pielāgojas saturam
+                  2. bg-slate-950/60 -> Caurspīdīgs
+                  3. backdrop-blur-md -> Matēts
               */}
-                            <div className="absolute bottom-4 left-4 right-4 bg-slate-950/60 backdrop-blur-md border border-white/10 p-5 rounded-xl transition-all duration-300 group-hover:bg-slate-950/80 group-hover:-translate-y-1">
+                            <div className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4 bg-slate-950/60 backdrop-blur-md border border-white/10 p-4 rounded-lg transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-slate-950/70 shadow-lg">
                                 <div className="flex justify-between items-start">
-                                    <div>
-                                        <p className="text-xs font-bold text-red-400 uppercase tracking-wider mb-1 drop-shadow-sm">
+                                    <div className="pr-2">
+                                        <p className="text-[10px] font-bold text-red-400 uppercase tracking-wider mb-0.5 drop-shadow-sm">
                                             {project.category}
                                         </p>
-                                        <h3 className="text-lg font-bold text-white mb-1 leading-tight drop-shadow-md">
+                                        {/* Responsive fonts: text-sm mobilajā, text-lg datorā */}
+                                        <h3 className="text-sm md:text-lg font-bold text-white mb-0 leading-tight drop-shadow-md">
                                             {project.title}
                                         </h3>
                                     </div>
 
-                                    {/* Bultiņa */}
-                                    <div className="bg-white/10 p-2 rounded-full group-hover:bg-primary transition-colors duration-300">
-                                        <ArrowRight className="w-5 h-5 text-white" />
+                                    <div className="bg-white/10 p-1.5 rounded-full group-hover:bg-primary transition-colors duration-300 shrink-0 mt-0.5">
+                                        <ArrowRight className="w-4 h-4 text-white" />
                                     </div>
                                 </div>
 
-                                {/* Lokācija - izslīd ārā pie hover */}
-                                <div className="flex items-center text-slate-300 text-xs font-medium mt-0 opacity-0 h-0 overflow-hidden group-hover:h-auto group-hover:mt-2 group-hover:opacity-100 transition-all duration-300">
-                                    <MapPin className="w-3 h-3 mr-1 text-red-400" />
-                                    {project.location}
+                                {/* Lokācija */}
+                                <div className="flex items-center text-slate-200 text-[11px] font-medium mt-0 opacity-0 h-0 overflow-hidden group-hover:h-auto group-hover:mt-2 group-hover:opacity-100 transition-all duration-300">
+                                    <MapPin className="w-3 h-3 mr-1 text-red-400 shrink-0" />
+                                    <span className="truncate">{project.location}</span>
                                 </div>
                             </div>
 

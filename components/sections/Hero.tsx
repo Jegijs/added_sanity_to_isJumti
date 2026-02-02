@@ -48,9 +48,9 @@ export default function Hero() {
     );
 
     return (
-        <section className="w-full bg-white py-12 lg:py-20">
+        <section className="w-full bg-white py-8 lg:py-20"> {/* Samazināju py-12 uz py-8 mobilajā */}
             <div className="container mx-auto px-4 md:px-6">
-                <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+                <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-center">
 
                     {/* KREISĀ PUSE */}
                     <div className="flex flex-col space-y-6 lg:space-y-8 order-2 lg:order-1">
@@ -60,16 +60,16 @@ export default function Hero() {
                                 <span>Sertificēti jumiķi Rīgā un Pierīgā</span>
                             </div>
 
-                            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
+                            <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
                                 Jūsu mājas jumts — <span className="text-red-600">mūsu atbildība.</span>
                             </h1>
 
-                            <p className="max-w-[600px] text-lg text-gray-600 leading-relaxed">
+                            <p className="max-w-[600px] text-base sm:text-lg text-gray-600 leading-relaxed">
                                 Mēs strādājam bez "haltūrām". Nodrošinām pilna cikla jumtu izbūvi,
                                 siltināšanu un oficiālu garantiju līdz 30 gadiem.
                             </p>
 
-                            <ul className="grid gap-2 py-2 text-gray-600">
+                            <ul className="grid gap-2 py-2 text-gray-600 text-sm sm:text-base">
                                 <li className="flex items-center gap-2">
                                     <Check className="h-4 w-4 text-red-600" /> Bezmaksas objekta apsekošana
                                 </li>
@@ -80,13 +80,13 @@ export default function Hero() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-3">
-                            <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold text-base h-12 px-8 rounded-md">
+                            <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold h-12 px-8 rounded-md shadow-lg shadow-red-100 w-full sm:w-auto">
                                 <Link href="/cenas">
                                     Aprēķināt Izmaksas
                                     <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                             </Button>
-                            <Button asChild variant="outline" size="lg" className="border-gray-300 hover:bg-gray-50 text-base h-12 px-8 rounded-md">
+                            <Button asChild variant="outline" size="lg" className="border-gray-300 hover:bg-gray-50 h-12 px-8 rounded-md w-full sm:w-auto">
                                 <Link href="/galerija">
                                     Skatīt Paveikto
                                 </Link>
@@ -106,9 +106,11 @@ export default function Hero() {
                             <CarouselContent>
                                 {heroSlides.map((slide) => (
                                     <CarouselItem key={slide.id}>
-                                        <div className="relative aspect-[3/2] w-full overflow-hidden rounded-xl shadow-lg bg-gray-100 group">
+                                        {/* IZMAIŅA 1: Mobilajā 'aspect-square' (kvadrāts), Datorā 'sm:aspect-[3/2]'. 
+                        Tas dod bildei vairāk augstuma telefonā. 
+                    */}
+                                        <div className="relative aspect-square sm:aspect-[3/2] w-full overflow-hidden rounded-xl shadow-xl bg-gray-100 group">
 
-                                            {/* Attēls */}
                                             <Image
                                                 src={slide.src}
                                                 alt={slide.alt}
@@ -117,19 +119,22 @@ export default function Hero() {
                                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
 
-                                            {/* IZMAIŅA: Caurspīdīgāks stikla efekts */}
-                                            {/* 1. bg-slate-950/60 -> 60% opacity (bija 90%)
-                          2. backdrop-blur-md -> Stiprāks izplūdums, lai teksts būtu lasāms
-                          3. border-white/10 -> Smalka gaiša līnija kontūrai
+                                            {/* IZMAIŅA 2: Kompaktāka kartīte. 
+                          Mobilajā (p-4), Datorā (p-5). 
                       */}
-                                            <div className="absolute bottom-4 left-4 right-4 md:left-6 md:right-6 bg-slate-950/60 backdrop-blur-md border border-white/10 p-5 rounded-xl shadow-2xl transition-all duration-300 group-hover:bg-slate-950/70">
-                                                <p className="text-xs font-bold uppercase tracking-wider text-red-400 mb-1 drop-shadow-sm">
+                                            <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 md:left-6 md:right-6 bg-slate-950/75 backdrop-blur-md border border-white/10 p-4 sm:p-5 rounded-xl shadow-2xl">
+                                                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-red-500 mb-1 drop-shadow-sm">
                                                     {slide.category}
                                                 </p>
-                                                <h3 className="text-xl font-bold text-white leading-tight mb-1 drop-shadow-md">
+                                                <h3 className="text-lg sm:text-xl font-bold text-white leading-tight mb-1 drop-shadow-md">
                                                     {slide.title}
                                                 </h3>
-                                                <p className="text-slate-200 text-sm line-clamp-2 drop-shadow-sm">
+
+                                                {/* IZMAIŅA 3: 'hidden sm:block'
+                            Apraksts tiek slēpts uz maziem telefoniem. 
+                            Tas atbrīvo vietu bildei. 
+                        */}
+                                                <p className="hidden sm:block text-slate-200 text-sm line-clamp-2 drop-shadow-sm mt-1">
                                                     {slide.description}
                                                 </p>
                                             </div>
@@ -139,6 +144,7 @@ export default function Hero() {
                                 ))}
                             </CarouselContent>
 
+                            {/* Navigācijas pogas */}
                             <div className="hidden lg:flex absolute -bottom-12 right-0 gap-2">
                                 <CarouselPrevious className="static translate-y-0 border-gray-300 hover:bg-gray-100" />
                                 <CarouselNext className="static translate-y-0 border-gray-300 hover:bg-gray-100" />
