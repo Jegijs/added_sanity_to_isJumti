@@ -1,20 +1,25 @@
+import ContactSection from "@/components/sections/ContactSection";
+import FAQ from "@/components/sections/FAQ";
+import Features from "@/components/sections/Features";
+import GalleryPreview from "@/components/sections/GalleryPreview";
 import Hero from "@/components/sections/Hero";
+import ServicesGrid from "@/components/sections/ServicesGrid";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
 
-      {/* 1. HERO SEKCIJA (Gatava) */}
       <Hero />
 
-      {/* 2. PAKALPOJUMI (Tūlīt uztaisīsim) */}
-      {/* <Services /> */}
+      <ServicesGrid />
 
-      {/* 3. KALKULATORS (Nauda) */}
-      {/* <Calculator /> */}
+      <Features />
 
-      {/* 4. KONTAKTI */}
-      {/* <ContactForm /> */}
+      <GalleryPreview />
+
+      <FAQ />
+
+      <ContactSection />
 
     </main>
   );

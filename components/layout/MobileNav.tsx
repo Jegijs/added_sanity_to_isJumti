@@ -14,38 +14,32 @@ import { NAVIGATION_LINKS, CONTACT_INFO } from "@/lib/constants";
 export default function MobileNav() {
     return (
         <Sheet>
-            {/* TRIGGER BUTTON (HAMBURGER)
-         - Changed size from default to h-14 w-14 (56px) for easier tapping
-         - Icon size increased to h-8 w-8 (32px)
-      */}
+            {/* TRIGGER BUTTON (HAMBURGER) */}
             <SheetTrigger asChild>
                 <Button
                     variant="ghost"
                     size="icon"
                     className="lg:hidden h-14 w-14 hover:bg-red-50 hover:text-primary rounded-xl"
                 >
-                    <Menu className="h-10 w-10 stroke-[2.5]" /> {/* Biezāka un lielāka ikona */}
+                    <Menu className="h-10 w-10 stroke-[2.5]" />
                     <span className="sr-only">Atvērt izvēlni</span>
                 </Button>
             </SheetTrigger>
 
             <SheetContent
                 side="right"
-                className="w-[320px] sm:w-[400px] bg-white text-slate-900 p-0 border-l-4 border-primary [&>button]:hidden flex flex-col"
+                className="w-[320px] sm:w-[400px] bg-white text-slate-900 p-0 border-l-4 border-primary [&>button]:hidden flex flex-col h-full"
             >
                 <SheetTitle className="sr-only">Mobilā izvēlne</SheetTitle>
                 <SheetDescription className="sr-only">Navigācija</SheetDescription>
 
                 {/* 1. Header */}
-                <div className="flex items-center justify-between p-6 border-b border-slate-100 bg-white">
+                <div className="flex items-center justify-between p-6 border-b border-slate-100 bg-white shrink-0">
                     <span className="text-2xl font-black tracking-tighter text-primary">
                         IS JUMTI
                     </span>
 
-                    {/* CLOSE BUTTON (X)
-             - Made it a large target (h-12 w-12) with a light background
-             - Easier to hit without aiming precisely
-          */}
+                    {/* CLOSE BUTTON (X) */}
                     <SheetClose asChild>
                         <Button
                             variant="ghost"
@@ -58,8 +52,9 @@ export default function MobileNav() {
                     </SheetClose>
                 </div>
 
-                {/* 2. Links - Increased padding for easier tapping */}
-                <div className="flex-1 overflow-y-auto py-8 px-6 bg-white">
+                {/* 2. Links */}
+                {/* IZMAIŅA: Noņemts 'overflow-y-auto', atstāts tikai 'flex-1', lai aizņemtu brīvo vietu */}
+                <div className="flex-1 py-8 px-6 bg-white flex flex-col justify-start">
                     <nav className="flex flex-col space-y-4">
                         {NAVIGATION_LINKS.map((item) => (
                             <SheetClose asChild key={item.href}>
@@ -75,7 +70,7 @@ export default function MobileNav() {
                 </div>
 
                 {/* 3. Footer */}
-                <div className="mt-auto p-6 bg-slate-900 text-white">
+                <div className="mt-auto p-6 bg-slate-900 text-white shrink-0">
                     <p className="text-xs font-bold text-slate-400 mb-4 uppercase tracking-widest">
                         Sazinies
                     </p>
