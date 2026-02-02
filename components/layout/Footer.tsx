@@ -3,6 +3,8 @@ import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
 import { CONTACT_INFO, NAVIGATION_LINKS } from "@/lib/constants";
 import Container from "@/components/layout/Container";
 
+import Logo from "../shared/Logo";
+
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
@@ -24,10 +26,7 @@ export default function Footer() {
                         {/* 1. Brand & Logo */}
                         <div className="flex flex-col gap-6">
                             <Link href="/" className="flex items-center gap-2 group">
-                                {/* Same House Icon as Header, but White/Red adapted for dark background */}
-                                <div className="bg-primary text-white p-1.5 rounded flex items-center justify-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5"><path d="M3 21h18" /><path d="M5 21V7l8-5 8 5v14" /></svg>
-                                </div>
+                                <Logo width={50} height={50} />
                                 <div className="flex flex-col leading-none">
                                     <span className="text-xl font-black tracking-tighter text-white group-hover:text-primary transition-colors">
                                         IS JUMTI

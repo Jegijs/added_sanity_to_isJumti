@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { NAVIGATION_LINKS, CONTACT_INFO } from "@/lib/constants";
 import MobileNav from "@/components/layout/MobileNav";
 import Container from "@/components/layout/Container";
+import Logo from "../shared/Logo";
 
 export default function Header() {
     return (
@@ -15,15 +16,12 @@ export default function Header() {
             <div className="w-full h-1 bg-primary" />
 
             <Container>
-                <div className="flex h-20 items-center justify-between">
+                <div className="flex h-24 items-center justify-between">
 
                     {/* 1. LOGO */}
                     <div className="flex items-center gap-2">
                         <Link href="/" className="flex items-center gap-2 group">
-                            {/* Mājiņas ikona (Sarkana) */}
-                            <div className="bg-primary text-white p-1.5 rounded flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5"><path d="M3 21h18" /><path d="M5 21V7l8-5 8 5v14" /></svg>
-                            </div>
+                            <Logo />
                             <div className="flex flex-col leading-none">
                                 <span className="text-lg font-black tracking-tighter text-slate-900 group-hover:text-primary transition-colors">
                                     IS JUMTI
