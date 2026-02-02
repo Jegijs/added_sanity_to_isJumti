@@ -5,12 +5,17 @@ import { Toaster } from "@/components/ui/sonner";
 // Components
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import CookieConsent from "@/components/shared/CookieConsent"; // <--- JAUNAIS
-
-import "./globals.css";
+import CookieConsent from "@/components/shared/CookieConsent";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+
+// 1. OPTIMIZĀCIJA: Pievienots 'display: swap' un 'variable', lai teksts parādītos uzreiz
+const inter = Inter({
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: "Jumiķa Pakalpojumi | IS JUMTI",
@@ -24,9 +29,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="lv" className="scroll-smooth">
+      {/* 2. OPTIMIZĀCIJA: 'min-h-screen flex flex-col' garantē, ka Footer vienmēr ir apakšā */}
       <body className={`${inter.className} flex min-h-screen flex-col`}>
         <Header />
 
+        {/* 'flex-1' liek saturam aizņemt visu brīvo vietu */}
         <main className="flex-1">
           {children}
         </main>
@@ -35,7 +42,6 @@ export default function RootLayout({
         <WhatsAppButton />
         <Toaster />
 
-        {/* Banneris satur arī Analytics loģiku, tāpēc liekam to šeit */}
         <CookieConsent />
       </body>
     </html>

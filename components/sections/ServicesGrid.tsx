@@ -5,14 +5,12 @@ import Image from "next/image";
 import { ArrowRight, Building2, Factory, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Kategoriju dati ar bildēm
 const mainCategories = [
     {
         icon: Home,
         title: "Privātmājas",
         description: "Jauna jumta montāža un renovācija ģimenes mājām. Dakstiņi, metāls, šīferis.",
         link: "/pakalpojumi",
-        // Pagaidām izmantojam to pašu bildi, vēlāk nomainīsi uz atbilstošu katrai kategorijai
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
     },
     {
@@ -47,39 +45,35 @@ export default function ServicesGrid() {
                     </p>
                 </div>
 
-                {/* Kartītes - Lieli attēlu bloki */}
+                {/* Kartītes */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                     {mainCategories.map((service, index) => (
                         <Link href={service.link} key={index} className="block group h-full">
 
-                            {/* Kartītes konteiners */}
                             <div className="relative h-[450px] w-full overflow-hidden rounded-2xl shadow-lg">
 
-                                {/* 1. Attēls fonā */}
+                                {/* 3. OPTIMIZĀCIJA: 'sizes' atribūts.
+                        Tas ietaupa ~30KB+ uz katru bildi mobilajā telefonā. 
+                    */}
                                 <Image
                                     src={service.src}
                                     alt={service.title}
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
                                 />
 
-                                {/* 2. Tumšais pārklājums (Overlay) 
-                        - bg-black/60 nodrošina, ka teksts būs lasāms.
-                        - group-hover:bg-black/70 padara fonu nedaudz tumšāku pie hover, lai teksts izceltos vēl vairāk.
-                    */}
+                                {/* Overlay */}
                                 <div className="absolute inset-0 bg-black/60 transition-colors duration-300 group-hover:bg-black/70" />
 
-                                {/* 3. Saturs virsū */}
+                                {/* Saturs */}
                                 <div className="absolute inset-0 flex flex-col justify-between p-8">
-
-                                    {/* Augša: Ikona */}
                                     <div className="flex justify-start">
                                         <div className="bg-white/10 p-4 rounded-xl backdrop-blur-md border border-white/20">
                                             <service.icon className="w-8 h-8 text-white" />
                                         </div>
                                     </div>
 
-                                    {/* Apakša: Teksts */}
                                     <div>
                                         <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
                                             {service.title}
@@ -88,7 +82,6 @@ export default function ServicesGrid() {
                                             {service.description}
                                         </p>
 
-                                        {/* "Poga" kas ir daļa no kartītes */}
                                         <div className="inline-flex items-center text-sm font-bold uppercase tracking-wider text-primary group-hover:text-white transition-colors duration-300">
                                             Skatīt piedāvājumu
                                             <ArrowRight className="ml-2 w-5 h-5" />
@@ -96,14 +89,13 @@ export default function ServicesGrid() {
                                     </div>
                                 </div>
 
-                                {/* Dekoratīva līnija apakšā */}
                                 <div className="absolute bottom-0 left-0 w-full h-1.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                             </div>
                         </Link>
                     ))}
                 </div>
 
-                {/* Poga apakšā */}
+                {/* Poga */}
                 <div className="mt-16 text-center">
                     <Button asChild size="lg" className="bg-white text-slate-900 border-2 border-slate-200 hover:border-primary hover:text-primary hover:bg-white px-8 py-6 text-lg font-bold shadow-sm transition-all">
                         <Link href="/pakalpojumi">
