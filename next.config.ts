@@ -1,8 +1,9 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // 1. Attēlu optimizācija (LCP uzlabojums)
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  // 1. Attēlu optimizācija
   images: {
-    // Ieslēdzam modernākos formātus. AVIF ir par ~20% vieglāks nekā WebP.
+    // Ieslēdzam modernākos formātus
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
@@ -10,19 +11,22 @@ const nextConfig = {
         hostname: "www.isjumti.lv",
       },
     ],
-    // Nedaudz samazinām kvalitāti, lai ietaupītu joslas platumu (vizuāli nevar atšķirt)
-    quality: 80,
+    // PIEZĪME: 'quality' šeit nav atļauts. Tas ir noklusējuma iestatījums (75).
+    // Ja vajag citu kvalitāti, to norāda pie <Image quality={80} ... /> komponentes.
   },
 
-  // 2. JavaScript optimizācija
-  swcMinify: true, // Izmanto ātro SWC kompilatoru
-
-  // 3. Eksperimentālā optimizācija bibliotēkām (samazina JS apjomu)
+  // 2. Eksperimentālā optimizācija bibliotēkām
   experimental: {
-    optimizePackageImports: ['lucide-react', 'embla-carousel-react', 'zod', 'date-fns', 'react-hook-form'],
+    optimizePackageImports: [
+      'lucide-react',
+      'embla-carousel-react',
+      'zod',
+      'date-fns',
+      'react-hook-form'
+    ],
   },
 
-  // 4. Tavi esošie Rewrites (URL pāradresācijas)
+  // 3. Rewrites (URL pāradresācijas)
   async rewrites() {
     return [
       {
@@ -51,10 +55,6 @@ const nextConfig = {
       },
     ];
   },
-
-  async redirects() {
-    return [];
-  }
 };
 
 export default nextConfig;
