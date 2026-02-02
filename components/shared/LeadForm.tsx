@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Loader2, Send } from "lucide-react";
-import { toast } from "sonner"; // Pārliecinies, ka tev ir uzinstalēts sonner
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,34 +26,31 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 
-// 1. Validācijas shēma (latviski ziņojumi)
 const formSchema = z.object({
     name: z.string().min(2, { message: "Lūdzu, norādiet vārdu (vismaz 2 burti)." }),
     phone: z.string().min(8, { message: "Lūdzu, norādiet korektu tālruņa numuru." }),
     email: z.string().email({ message: "Nepieciešams derīgs e-pasts piedāvājuma nosūtīšanai." }),
-    serviceType: z.string({ required_error: "Lūdzu, izvēlieties objekta tipu." }),
-    message: z.string().optional(), // Ziņojums nav obligāts, bet vēlams
+    serviceType: z.string().min(1, { message: "Lūdzu, izvēlieties objekta tipu." }),
+    message: z.string().optional(),
 });
 
 export default function LeadForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // 2. Formas inicializācija
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
             phone: "",
             email: "",
+            serviceType: "",
             message: "",
         },
     });
 
-    // 3. Iesniegšanas funkcija
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsSubmitting(true);
 
-        // Simulācija - šeit vēlāk pieslēgsi API (piem., EmailJS vai savu serveri)
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
         console.log("Saņemtais pieteikums:", values);
@@ -69,7 +66,6 @@ export default function LeadForm() {
 
     return (
         <div className="bg-white p-6 md:p-8 h-full flex flex-col justify-center">
-
             <div className="mb-6">
                 <h3 className="text-2xl font-black text-slate-900 uppercase">
                     Pieteikt Konsultāciju
@@ -81,8 +77,6 @@ export default function LeadForm() {
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-
-                    {/* Vārds */}
                     <FormField
                         control={form.control}
                         name="name"
@@ -98,7 +92,6 @@ export default function LeadForm() {
                     />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* Tālrunis */}
                         <FormField
                             control={form.control}
                             name="phone"
@@ -113,7 +106,6 @@ export default function LeadForm() {
                             )}
                         />
 
-                        {/* E-pasts */}
                         <FormField
                             control={form.control}
                             name="email"
@@ -129,7 +121,6 @@ export default function LeadForm() {
                         />
                     </div>
 
-                    {/* Kategorija - Svarīgi pārdošanai */}
                     <FormField
                         control={form.control}
                         name="serviceType"
@@ -155,7 +146,6 @@ export default function LeadForm() {
                         )}
                     />
 
-                    {/* Ziņojums */}
                     <FormField
                         control={form.control}
                         name="message"
