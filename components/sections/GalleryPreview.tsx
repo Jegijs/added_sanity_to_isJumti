@@ -12,7 +12,6 @@ const projects = [
         category: "Metāla Dakstiņš",
         location: "Mārupe, Pierīga",
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
-        // Desktop: Aizņem 2 kolonnas un 2 rindas (pilns augstums)
         size: "col-span-1 md:col-span-2 md:row-span-2 h-[350px] md:h-full",
     },
     {
@@ -21,7 +20,6 @@ const projects = [
         category: "Kausējamais Jumts",
         location: "Rīga, Centrs",
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
-        // Desktop: Aizņem 1 kolonnu un 1 rindu (puse augstuma)
         size: "col-span-1 md:col-span-1 md:row-span-1 h-[300px] md:h-full",
     },
     {
@@ -30,7 +28,6 @@ const projects = [
         category: "Valcprofils",
         location: "Jelgava",
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
-        // Desktop: Aizņem 1 kolonnu un 1 rindu (puse augstuma)
         size: "col-span-1 md:col-span-1 md:row-span-1 h-[300px] md:h-full",
     },
 ];
@@ -60,43 +57,49 @@ export default function GalleryPreview() {
                     </Button>
                 </div>
 
-                {/* IZMAIŅA: Pievienots `md:h-[600px]` 
-            Tas pasaka pārlūkam: "Uz datora šis režģis ir 600px augsts".
-            Tagad iekšējie elementi zinās, cik lieli viņi drīkst būt.
-        */}
+                {/* Bento Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 md:h-[600px]">
                     {projects.map((project) => (
                         <div
                             key={project.id}
                             className={`relative group overflow-hidden rounded-xl border border-slate-800 bg-slate-800 w-full ${project.size}`}
                         >
-                            {/* Attēls */}
+                            {/* Attēls - Spilgts, bez overlay */}
                             <Image
                                 src={project.src}
                                 alt={project.title}
                                 fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
 
-                            {/* Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                            {/* INFO BLOKS - Tikai tekstam */}
+                            {/* bg-slate-950/90 -> Tumšs fons, gandrīz necaurspīdīgs
+                  backdrop-blur-sm -> Neliels "stikla" efekts fonam
+                  border-t -> Smalka līnija atdalīšanai
+              */}
+                            <div className="absolute bottom-0 left-0 w-full bg-slate-950/90 backdrop-blur-sm border-t border-slate-800 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                <div className="flex justify-between items-start">
+                                    <div>
+                                        <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">
+                                            {project.category}
+                                        </p>
+                                        <h3 className="text-lg font-bold text-white mb-1 leading-tight">
+                                            {project.title}
+                                        </h3>
+                                    </div>
+                                    {/* Bultiņa stūrī */}
+                                    <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary transition-colors duration-300">
+                                        <ArrowRight className="w-5 h-5 text-primary group-hover:text-white" />
+                                    </div>
+                                </div>
 
-                            {/* Informācija */}
-                            <div className="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                <p className="text-xs font-bold text-primary uppercase tracking-wider mb-1">
-                                    {project.category}
-                                </p>
-                                <h3 className="text-xl font-bold text-white mb-2">
-                                    {project.title}
-                                </h3>
-                                <div className="flex items-center text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
-                                    <MapPin className="w-4 h-4 mr-1 text-primary" />
+                                {/* Lokācija - parādās tikai pie hover, lai nepārslogotu skatu */}
+                                <div className="flex items-center text-slate-400 text-xs font-medium mt-2 opacity-0 h-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-300">
+                                    <MapPin className="w-3 h-3 mr-1 text-slate-500" />
                                     {project.location}
                                 </div>
                             </div>
 
-                            {/* Rāmis */}
-                            <div className="absolute inset-0 border-2 border-primary/0 group-hover:border-primary/100 transition-colors duration-300 rounded-xl pointer-events-none" />
                         </div>
                     ))}
                 </div>

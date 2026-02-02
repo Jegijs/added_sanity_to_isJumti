@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import CookieConsent from "@/components/shared/CookieConsent"; // <--- JAUNAIS
 
 import "./globals.css";
+import WhatsAppButton from "@/components/shared/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        <WhatsAppButton />
         <Toaster />
 
         {/* Banneris satur arī Analytics loģiku, tāpēc liekam to šeit */}
