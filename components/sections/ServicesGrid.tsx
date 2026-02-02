@@ -1,104 +1,113 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Building2, Factory, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
-// Kategoriju dati
+// Kategoriju dati ar bildēm
 const mainCategories = [
     {
         icon: Home,
         title: "Privātmājas",
         description: "Jauna jumta montāža un renovācija ģimenes mājām. Dakstiņi, metāls, šīferis.",
         link: "/pakalpojumi",
-        // Ikonas krāsa paliek, lai atšķirtu kategorijas, bet fons būs neitrāls
-        iconColor: "text-red-600",
-        iconBg: "bg-red-100",
+        // Pagaidām izmantojam to pašu bildi, vēlāk nomainīsi uz atbilstošu katrai kategorijai
+        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
     },
     {
         icon: Building2,
         title: "Daudzdzīvokļu Nami",
         description: "Pilna cikla renovācija biedrībām. Kausējamie jumti, siltināšana un bēniņu izbūve.",
         link: "/pakalpojumi",
-        iconColor: "text-blue-600",
-        iconBg: "bg-blue-100",
+        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
     },
     {
         icon: Factory,
         title: "Komercobjekti",
         description: "Industriālie risinājumi lielām platībām. Angāri, noliktavas un ražošanas ēkas.",
         link: "/pakalpojumi",
-        iconColor: "text-amber-600",
-        iconBg: "bg-amber-100",
+        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
     },
 ];
 
 export default function ServicesGrid() {
     return (
-        // Fons: Slate-50 (ļoti gaiši pelēks), lai atdalītu no baltā Header un Footer
-        <section className="py-16 bg-slate-50 lg:py-24 border-b border-slate-200">
+        <section className="py-20 bg-white lg:py-28 border-b border-slate-100">
             <div className="container mx-auto px-4 md:px-6">
 
-                {/* Virsrakstu sadaļa - Identiska stila kā pārējā lapā */}
-                <div className="text-center mb-12 space-y-4">
-                    <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl uppercase">
+                {/* Virsraksts */}
+                <div className="text-center mb-16 space-y-6">
+                    <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl md:text-5xl uppercase">
                         Mūsu Specializācija
                     </h2>
-                    <div className="w-20 h-1 bg-primary mx-auto rounded-full" /> {/* Sarkanā svītra - zīmola elements */}
-                    <p className="mx-auto max-w-[700px] text-slate-600 text-lg">
-                        Mēs sadalām savu darbu trīs galvenajos sektoros, lai nodrošinātu visaugstāko kvalitāti katrā no tiem.
+                    <div className="w-24 h-1.5 bg-primary mx-auto rounded-full" />
+                    <p className="mx-auto max-w-2xl text-slate-600 text-xl font-medium">
+                        Izvēlieties sev atbilstošo kategoriju.
                     </p>
                 </div>
 
-                {/* Kartītes */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Kartītes - Lieli attēlu bloki */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                     {mainCategories.map((service, index) => (
-                        <Card
-                            key={index}
-                            className="relative group bg-white border-slate-200 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden"
-                        >
-                            <CardHeader>
-                                {/* Ikonas aplis - saglabājam krāsu kodus TIKAI šeit */}
-                                <div className={`w-14 h-14 rounded-2xl ${service.iconBg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                                    <service.icon className={`w-7 h-7 ${service.iconColor}`} />
+                        <Link href={service.link} key={index} className="block group h-full">
+
+                            {/* Kartītes konteiners */}
+                            <div className="relative h-[450px] w-full overflow-hidden rounded-2xl shadow-lg">
+
+                                {/* 1. Attēls fonā */}
+                                <Image
+                                    src={service.src}
+                                    alt={service.title}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+
+                                {/* 2. Tumšais pārklājums (Overlay) 
+                        - bg-black/60 nodrošina, ka teksts būs lasāms.
+                        - group-hover:bg-black/70 padara fonu nedaudz tumšāku pie hover, lai teksts izceltos vēl vairāk.
+                    */}
+                                <div className="absolute inset-0 bg-black/60 transition-colors duration-300 group-hover:bg-black/70" />
+
+                                {/* 3. Saturs virsū */}
+                                <div className="absolute inset-0 flex flex-col justify-between p-8">
+
+                                    {/* Augša: Ikona */}
+                                    <div className="flex justify-start">
+                                        <div className="bg-white/10 p-4 rounded-xl backdrop-blur-md border border-white/20">
+                                            <service.icon className="w-8 h-8 text-white" />
+                                        </div>
+                                    </div>
+
+                                    {/* Apakša: Teksts */}
+                                    <div>
+                                        <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
+                                            {service.title}
+                                        </h3>
+                                        <p className="text-slate-200 text-base leading-relaxed mb-6 opacity-90">
+                                            {service.description}
+                                        </p>
+
+                                        {/* "Poga" kas ir daļa no kartītes */}
+                                        <div className="inline-flex items-center text-sm font-bold uppercase tracking-wider text-primary group-hover:text-white transition-colors duration-300">
+                                            Skatīt piedāvājumu
+                                            <ArrowRight className="ml-2 w-5 h-5" />
+                                        </div>
+                                    </div>
                                 </div>
-                                <CardTitle className="text-xl font-bold text-slate-900">
-                                    {service.title}
-                                </CardTitle>
-                            </CardHeader>
 
-                            <CardContent>
-                                <CardDescription className="text-base leading-relaxed text-slate-600">
-                                    {service.description}
-                                </CardDescription>
-                            </CardContent>
-
-                            <CardFooter>
-                                <Button
-                                    variant="ghost"
-                                    className="p-0 hover:bg-transparent font-semibold text-slate-900 group-hover:text-primary transition-colors duration-300"
-                                    asChild
-                                >
-                                    <Link href={service.link} className="flex items-center">
-                                        Uzzināt vairāk
-                                        {/* Bultiņa iekrāsojas sarkanā tikai pie hover */}
-                                        <ArrowRight className="ml-2 w-4 h-4 text-slate-400 group-hover:text-primary transition-colors" />
-                                    </Link>
-                                </Button>
-                            </CardFooter>
-
-                            {/* Sarkanā līnija kartītes apakšā pie hover (atsauce uz header/footer) */}
-                            <div className="absolute bottom-0 left-0 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                        </Card>
+                                {/* Dekoratīva līnija apakšā */}
+                                <div className="absolute bottom-0 left-0 w-full h-1.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                            </div>
+                        </Link>
                     ))}
                 </div>
 
-                {/* Poga uz pilno sarakstu */}
-                <div className="mt-12 text-center">
-                    <Button asChild size="lg" variant="outline" className="border-slate-300 text-slate-700 hover:bg-white hover:text-primary hover:border-primary shadow-sm">
+                {/* Poga apakšā */}
+                <div className="mt-16 text-center">
+                    <Button asChild size="lg" className="bg-white text-slate-900 border-2 border-slate-200 hover:border-primary hover:text-primary hover:bg-white px-8 py-6 text-lg font-bold shadow-sm transition-all">
                         <Link href="/pakalpojumi">
-                            Skatīt visus pakalpojumus
+                            Visi Pakalpojumi
                         </Link>
                     </Button>
                 </div>
