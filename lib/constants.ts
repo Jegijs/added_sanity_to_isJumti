@@ -5,6 +5,7 @@ export const NAVIGATION_LINKS = [
     { name: "Pakalpojumi", href: "/pakalpojumi" },
     { name: "Galerija", href: "/galerija" },
     { name: "Izmaksas", href: "/izmaksas" },
+    { name: "Padomi", href: "/blog" },
     { name: "Kontakti", href: "/kontakti" },
 ];
 
