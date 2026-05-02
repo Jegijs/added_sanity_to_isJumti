@@ -3,147 +3,170 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Autoplay from "embla-carousel-autoplay";
-import { ArrowRight, Check, ShieldCheck } from "lucide-react";
-
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel";
+import { ArrowRight, Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CONTACT_INFO } from "@/lib/constants";
 
 const heroSlides = [
     {
         id: 1,
         category: "Privātmājas",
-        title: "Jumti, kas sargā ģimeni",
-        description: "Metāla un dakstiņu jumtu montāža ar 30 gadu garantiju.",
         src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
-        alt: "IS JUMTI veiktais jumta renovācijas projekts",
+        alt: "Privātmājas jumta renovācija",
     },
     {
         id: 2,
-        category: "Daudzdzīvokļu Nami",
-        title: "Renovācija biedrībām",
-        description: "Pilna cikla siltināšana un jumta maiņa bez slēptām izmaksām.",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
+        category: "Daudzdzīvokļu nami",
+        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/450512551_1004194185048314_1571388777996338156_n-1-1200x800.jpg",
         alt: "Daudzdzīvokļu mājas jumta renovācija",
     },
     {
         id: 3,
-        category: "Komercobjekti",
-        title: "Industriālie Risinājumi",
-        description: "Lielu platību jumtu ieklāšana ar precīziem termiņiem.",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
-        alt: "Jumiķi uz komercēkas jumta",
+        category: "Siltināšana",
+        src: "https://www.isjumti.lv/wp-content/uploads/2025/01/5976776786199034863-1200x800.jpeg",
+        alt: "Jumta siltināšanas un renovācijas darbi",
     },
 ];
 
+const stats = [
+    { value: "12+", label: "Gadu pieredze" },
+    { value: "850+", label: "Pabeigti jumti" },
+    { value: "30", label: "Gadu garantija" },
+];
+
+const SLIDE_DELAY = 6000;
+
 export default function Hero() {
-    const plugin = React.useRef(
-        Autoplay({ delay: 5000, stopOnInteraction: true })
-    );
+    const [current, setCurrent] = React.useState(0);
+    const [paused, setPaused] = React.useState(false);
+
+    React.useEffect(() => {
+        if (paused) return;
+        const id = window.setInterval(() => {
+            setCurrent((c) => (c + 1) % heroSlides.length);
+        }, SLIDE_DELAY);
+        return () => window.clearInterval(id);
+    }, [paused]);
 
     return (
-        <section className="w-full bg-white py-8 lg:py-20">
-            <div className="container mx-auto px-4 md:px-6">
-                <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-center">
+        <section className="relative overflow-hidden bg-[#9f0610] text-white">
+            <div className="pointer-events-none absolute inset-0 bg-shingle-pattern opacity-[0.08]" />
+            <div className="relative container mx-auto px-4 py-12 sm:px-6 lg:py-18">
+                <div className="grid gap-8 lg:grid-cols-[0.48fr_0.52fr] lg:items-center lg:gap-12">
 
-                    {/* KREISĀ PUSE */}
-                    <div className="flex flex-col space-y-6 lg:space-y-8 order-2 lg:order-1">
-                        <div className="space-y-4">
-                            <div className="inline-flex items-center space-x-2 text-sm font-semibold text-red-600">
-                                <ShieldCheck className="h-5 w-5" />
-                                <span>Sertificēti jumiķi Rīgā un Pierīgā</span>
-                            </div>
+                    {/* LEFT — content (always first on mobile) */}
+                    <div>
+                        <h1 className="max-w-2xl text-[2.5rem] font-black leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
+                            Jūsu jumts ir mūsu atbildība.
+                        </h1>
 
-                            <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl xl:text-6xl">
-                                Jūsu mājas jumts — <span className="text-red-600">mūsu atbildība.</span>
-                            </h1>
+                        <p className="mt-5 max-w-xl text-base leading-relaxed text-red-50/90 sm:text-lg">
+                            Jumtu izbūve, renovācija un ekovates siltināšana visā Latvijā ar rūpīgu materiālu izvēli un oficiālu garantiju.
+                        </p>
 
-                            <p className="max-w-[600px] text-base sm:text-lg text-gray-600 leading-relaxed">
-                                Mēs strādājam bez "haltūrām". Nodrošinām pilna cikla jumtu izbūvi,
-                                siltināšanu un oficiālu garantiju līdz 30 gadiem.
-                            </p>
+                        <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-white/90 lg:max-w-xl">
+                            <li className="flex items-center gap-2 whitespace-nowrap">
+                                <Check className="h-4 w-4 shrink-0 text-red-100" /> Bezmaksas apsekošana
+                            </li>
+                            <li className="flex items-center gap-2 whitespace-nowrap">
+                                <Check className="h-4 w-4 shrink-0 text-red-100" /> Tāme 24h laikā
+                            </li>
+                            <li className="flex items-center gap-2 whitespace-nowrap">
+                                <Check className="h-4 w-4 shrink-0 text-red-100" /> Garantija darbiem
+                            </li>
+                        </ul>
 
-                            <ul className="grid gap-2 py-2 text-gray-600 text-sm sm:text-base">
-                                <li className="flex items-center gap-2">
-                                    <Check className="h-4 w-4 text-red-600" /> Bezmaksas objekta apsekošana
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <Check className="h-4 w-4 text-red-600" /> Tāme 24 stundu laikā
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="flex flex-col sm:flex-row gap-3">
-                            <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold h-12 px-8 rounded-md shadow-lg shadow-red-100 w-full sm:w-auto">
-                                <Link href="/cenas">
-                                    Aprēķināt Izmaksas
+                        <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                            <Button
+                                asChild
+                                size="lg"
+                                className="h-12 w-full rounded-md bg-white px-6 font-bold text-red-700 shadow-none hover:bg-red-50 sm:w-auto"
+                            >
+                                <Link href="/izmaksas">
+                                    Aprēķināt izmaksas
                                     <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
                             </Button>
-                            <Button asChild variant="outline" size="lg" className="border-gray-300 hover:bg-gray-50 h-12 px-8 rounded-md w-full sm:w-auto">
-                                <Link href="/galerija">
-                                    Skatīt Paveikto
+                            <Button
+                                asChild
+                                size="lg"
+                                variant="outline"
+                                className="h-12 w-full rounded-md border-white/35 bg-transparent px-6 text-white hover:bg-white/10 hover:text-white sm:w-auto"
+                            >
+                                <Link href={`tel:${CONTACT_INFO.phone}`}>
+                                    <Phone className="mr-2 h-4 w-4 shrink-0" />
+                                    {CONTACT_INFO.phoneDisplay}
                                 </Link>
                             </Button>
                         </div>
+
+                        {/* Stats */}
+                        <div className="mt-8 grid max-w-md grid-cols-3 gap-3 border-t border-white/20 pt-5">
+                            {stats.map((s) => (
+                                <div key={s.label}>
+                                    <div className="text-2xl font-black tracking-tight">{s.value}</div>
+                                    <div className="mt-0.5 text-[10px] uppercase tracking-wider text-red-100/70 sm:text-xs">{s.label}</div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
-                    {/* LABĀ PUSE: Karuselis */}
-                    <div className="order-1 lg:order-2 w-full">
-                        <Carousel
-                            plugins={[plugin.current]}
-                            className="w-full"
-                            onMouseEnter={plugin.current.stop}
-                            onMouseLeave={plugin.current.reset}
-                            opts={{ loop: true }}
-                        >
-                            <CarouselContent>
-                                {heroSlides.map((slide, index) => (
-                                    <CarouselItem key={slide.id}>
-                                        <div className="relative aspect-square sm:aspect-[3/2] w-full overflow-hidden rounded-xl shadow-xl bg-gray-100 group">
-
-                                            {/* 4. OPTIMIZĀCIJA: 'priority' un 'sizes'
-                          Pirmais slaids (index 0) tiek ielādēts uzreiz (priority). 
-                      */}
-                                            <Image
-                                                src={slide.src}
-                                                alt={slide.alt}
-                                                fill
-                                                priority={index === 0}
-                                                sizes="(max-width: 768px) 100vw, 50vw"
-                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                            />
-
-                                            <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 md:left-6 md:right-6 bg-slate-950/75 backdrop-blur-md border border-white/10 p-4 sm:p-5 rounded-xl shadow-2xl">
-                                                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-red-500 mb-1 drop-shadow-sm">
-                                                    {slide.category}
-                                                </p>
-                                                <h3 className="text-lg sm:text-xl font-bold text-white leading-tight mb-1 drop-shadow-md">
-                                                    {slide.title}
-                                                </h3>
-                                                <p className="hidden sm:block text-slate-200 text-sm line-clamp-2 drop-shadow-sm mt-1">
-                                                    {slide.description}
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </CarouselItem>
-                                ))}
-                            </CarouselContent>
-
-                            <div className="hidden lg:flex absolute -bottom-12 right-0 gap-2">
-                                <CarouselPrevious className="static translate-y-0 border-gray-300 hover:bg-gray-100" />
-                                <CarouselNext className="static translate-y-0 border-gray-300 hover:bg-gray-100" />
+                    {/* RIGHT — image slider (below content on mobile) */}
+                    <div
+                        className="w-full"
+                        onMouseEnter={() => setPaused(true)}
+                        onMouseLeave={() => setPaused(false)}
+                    >
+                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md bg-black/20">
+                            {heroSlides.map((slide, i) => (
+                                <div
+                                    key={slide.id}
+                                    className={`absolute inset-0 transition-opacity duration-700 ${i === current ? "opacity-100" : "opacity-0"}`}
+                                    aria-hidden={i !== current}
+                                >
+                                    <Image
+                                        src={slide.src}
+                                        alt={slide.alt}
+                                        fill
+                                        priority={i === 0}
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
+                                        className="object-cover"
+                                    />
+                                </div>
+                            ))}
+                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                <p className="text-xs font-bold uppercase tracking-wider text-white">
+                                    {heroSlides[current].category}
+                                </p>
                             </div>
-                        </Carousel>
-                    </div>
+                        </div>
 
+                        <div className="mt-3 flex gap-2">
+                            {heroSlides.map((slide, index) => {
+                                const isActive = index === current;
+                                return (
+                                    <button
+                                        key={slide.id}
+                                        type="button"
+                                        onClick={() => setCurrent(index)}
+                                        aria-label={`Rādīt: ${slide.category}`}
+                                        className={`h-1.5 flex-1 rounded-full transition ${isActive ? "bg-white" : "bg-white/30 hover:bg-white/50"}`}
+                                    >
+                                        <span className="sr-only">{slide.category}</span>
+                                        <span className="block h-full overflow-hidden rounded-full bg-transparent">
+                                            {isActive && (
+                                                <span
+                                                    key={`bar-${current}`}
+                                                    className="block h-full w-full origin-left bg-white"
+                                                    style={{ animation: `slideProgress ${SLIDE_DELAY}ms linear forwards` }}
+                                                />
+                                            )}
+                                        </span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

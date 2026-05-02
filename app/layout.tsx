@@ -7,6 +7,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CookieConsent from "@/components/shared/CookieConsent";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
+import LeadModal from "@/components/shared/LeadModal";
+import MobileStickyCTA from "@/components/shared/MobileStickyCTA";
 
 import "./globals.css";
 
@@ -39,6 +41,8 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        <LeadModal />
+        <MobileStickyCTA />
         <WhatsAppButton />
         <Toaster />
 

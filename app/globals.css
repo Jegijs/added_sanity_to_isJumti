@@ -135,7 +135,118 @@
     @apply border-border outline-ring/50;
   }
 
+  html,
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+}
+
+/* Brand: IS JUMTI red palette (matches logo #E30613) */
+@layer utilities {
+  .bg-brand {
+    background-color: #E30613;
+  }
+  .text-brand {
+    color: #E30613;
+  }
+  .border-brand {
+    border-color: #E30613;
+  }
+
+  /* Hero gradient — clean diagonal, deep crimson */
+  .bg-hero-brand {
+    background: linear-gradient(160deg, #C2050E 0%, #8B0410 55%, #4A020A 100%);
+  }
+
+  /*
+   * Shingle / roof-tile pattern — staggered rows of curved tiles.
+   * Built from layered radial gradients to fake shingle scales,
+   * plus subtle horizontal seams for the rows.
+   */
+  .bg-shingle-pattern {
+    background-image:
+      /* Row seams */
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 23px,
+        rgba(0, 0, 0, 0.18) 23px,
+        rgba(0, 0, 0, 0.18) 24px
+      ),
+      /* Shingle scales (offset row) */
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(255, 255, 255, 0.06) 0,
+        rgba(255, 255, 255, 0.06) 11px,
+        transparent 12px
+      ),
+      /* Shingle scales (base row) */
+      radial-gradient(
+        circle at 0% 0%,
+        rgba(0, 0, 0, 0.12) 0,
+        rgba(0, 0, 0, 0.12) 11px,
+        transparent 12px
+      );
+    background-size:
+      100% 24px,
+      24px 24px,
+      24px 24px;
+    background-position:
+      0 0,
+      12px 12px,
+      0 0;
+  }
+
+  /* Hide scrollbars (used by horizontal-scroll category tabs on mobile) */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Diagonal pattern echoing the logo's roof lines */
+  .bg-roof-pattern {
+    background-image:
+      repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 24px),
+      repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 24px);
+  }
+
+  /* Infinite marquee for partner slider */
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  .marquee-pause:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+
+  /* Subtle floating for hero accent badges */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+
+  /* Active-tab progress bar synced to carousel autoplay delay */
+  @keyframes slideProgress {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+}
+
+/* Reserve space for the floating WhatsApp button so it doesn't overlap content */
+@media (max-width: 640px) {
+  body {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
   }
 }

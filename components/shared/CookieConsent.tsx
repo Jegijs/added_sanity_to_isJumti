@@ -1,43 +1,57 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { X, Cookie } from "lucide-react";
+import { Cookie } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+function subscribeToCookieConsent(callback: () => void) {
+    window.addEventListener("storage", callback);
+    window.addEventListener("cookieConsentChange", callback);
+
+    return () => {
+        window.removeEventListener("storage", callback);
+        window.removeEventListener("cookieConsentChange", callback);
+    };
+}
+
+function getCookieConsentSnapshot() {
+    return localStorage.getItem("cookieConsent");
+}
+
+function getCookieConsentServerSnapshot() {
+    return null;
+}
+
 export default function CookieConsent() {
     const [isVisible, setIsVisible] = useState(false);
-    const [consentGranted, setConsentGranted] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
+    const cookieConsent = useSyncExternalStore(
+        subscribeToCookieConsent,
+        getCookieConsentSnapshot,
+        getCookieConsentServerSnapshot
+    );
+    const consentGranted = cookieConsent === "granted";
 
     useEffect(() => {
-        setIsMounted(true);
-        // Check localStorage on mount
-        const savedConsent = localStorage.getItem("cookieConsent");
+        if (cookieConsent !== null) return;
 
-        if (savedConsent === "granted") {
-            setConsentGranted(true);
-        } else if (savedConsent === null) {
-            // If no choice made yet, show banner after a small delay
-            const timer = setTimeout(() => setIsVisible(true), 1000);
-            return () => clearTimeout(timer);
-        }
-    }, []);
+        // If no choice made yet, show banner after a small delay
+        const timer = setTimeout(() => setIsVisible(true), 1000);
+        return () => clearTimeout(timer);
+    }, [cookieConsent]);
 
     const acceptCookies = () => {
         localStorage.setItem("cookieConsent", "granted");
-        setConsentGranted(true);
+        window.dispatchEvent(new Event("cookieConsentChange"));
         setIsVisible(false);
     };
 
     const declineCookies = () => {
         localStorage.setItem("cookieConsent", "denied");
-        setConsentGranted(false);
+        window.dispatchEvent(new Event("cookieConsentChange"));
         setIsVisible(false);
     };
-
-    if (!isMounted) return null;
 
     return (
         <>
@@ -66,7 +80,7 @@ export default function CookieConsent() {
                             </h3>
                             <p className="text-sm text-slate-600 leading-relaxed max-w-2xl">
                                 Mēs izmantojam sīkdatnes (cookies), lai analizētu vietnes plūsmu un uzlabotu lietotāja pieredzi.
-                                Nospiežot "Piekrītu", jūs atļaujat mums izmantot Google Analytics.
+                                Nospiežot &quot;Piekrītu&quot;, jūs atļaujat mums izmantot Google Analytics.
                             </p>
                         </div>
                     </div>

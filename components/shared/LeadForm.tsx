@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Loader2, Send } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -27,10 +27,13 @@ import {
 } from "@/components/ui/select";
 
 const formSchema = z.object({
-    name: z.string().min(2, { message: "Lūdzu, norādiet vārdu (vismaz 2 burti)." }),
-    phone: z.string().min(8, { message: "Lūdzu, norādiet korektu tālruņa numuru." }),
-    email: z.string().email({ message: "Nepieciešams derīgs e-pasts piedāvājuma nosūtīšanai." }),
-    serviceType: z.string().min(1, { message: "Lūdzu, izvēlieties objekta tipu." }),
+    name: z.string().min(2, { message: "Norādiet vārdu." }),
+    phone: z.string().min(8, { message: "Norādiet tālruņa numuru." }),
+    email: z.string().refine((value) => value === "" || z.string().email().safeParse(value).success, {
+        message: "Norādiet derīgu e-pastu.",
+    }),
+    location: z.string().optional(),
+    serviceType: z.string().min(1, { message: "Izvēlieties pakalpojumu." }),
     message: z.string().optional(),
 });
 
@@ -43,6 +46,7 @@ export default function LeadForm() {
             name: "",
             phone: "",
             email: "",
+            location: "",
             serviceType: "",
             message: "",
         },
@@ -53,10 +57,13 @@ export default function LeadForm() {
 
         await new Promise((resolve) => setTimeout(resolve, 1500));
 
-        console.log("Saņemtais pieteikums:", values);
+        const photoInput = document.getElementById("roof-photo") as HTMLInputElement | null;
+        const photoName = photoInput?.files?.[0]?.name;
 
-        toast.success("Pieteikums veiksmīgi nosūtīts!", {
-            description: "Paldies! Mēs ar Jums sazināsimies tuvākajā laikā.",
+        console.log("Saņemtais pieteikums:", { ...values, photoName });
+
+        toast.success("Pieteikums nosūtīts", {
+            description: "Paldies. Sazināsimies tuvākajā laikā.",
             duration: 5000,
         });
 
@@ -65,79 +72,82 @@ export default function LeadForm() {
     }
 
     return (
-        <div className="bg-white p-6 md:p-8 h-full flex flex-col justify-center">
-            <div className="mb-6">
-                <h3 className="text-2xl font-black text-slate-900 uppercase">
-                    Pieteikt Konsultāciju
-                </h3>
-                <p className="text-slate-500 mt-2 text-sm">
-                    Aizpildiet formu, lai saņemtu bezmaksas objekta apsekošanu vai tāmes aprēķinu.
-                </p>
-            </div>
-
+        <div className="p-5 sm:p-7">
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 lg:grid-cols-2">
                     <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="font-semibold text-slate-700">Vārds, Uzvārds</FormLabel>
+                                <FormLabel className="text-sm font-bold text-slate-800">Vārds, uzvārds</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Jānis Bērziņš" className="bg-slate-50 border-slate-200 focus:bg-white transition-colors" {...field} />
+                                    <Input placeholder="Jānis Bērziņš" className="h-11 rounded-md border-slate-300 bg-white px-3" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <FormField
-                            control={form.control}
-                            name="phone"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="font-semibold text-slate-700">Tālrunis</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="2xxxxxxx" type="tel" className="bg-slate-50 border-slate-200 focus:bg-white" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                    <FormField
+                        control={form.control}
+                        name="phone"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-sm font-bold text-slate-800">Tālrunis</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="+371 2xxxxxxx" type="tel" className="h-11 rounded-md border-slate-300 bg-white px-3" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
 
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="font-semibold text-slate-700">E-pasts</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="janis@epasts.lv" type="email" className="bg-slate-50 border-slate-200 focus:bg-white" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </div>
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-sm font-bold text-slate-800">E-pasts <span className="font-medium text-slate-400">(pēc izvēles)</span></FormLabel>
+                                <FormControl>
+                                    <Input placeholder="janis@epasts.lv" type="email" className="h-11 rounded-md border-slate-300 bg-white px-3" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+                    <FormField
+                        control={form.control}
+                        name="location"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-sm font-bold text-slate-800">Objekta vieta <span className="font-medium text-slate-400">(pēc izvēles)</span></FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Jelgava, Rīga, Pierīga..." className="h-11 rounded-md border-slate-300 bg-white px-3" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
 
                     <FormField
                         control={form.control}
                         name="serviceType"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="font-semibold text-slate-700">Kas Jūs interesē?</FormLabel>
+                                <FormLabel className="text-sm font-bold text-slate-800">Pakalpojums</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                     <FormControl>
-                                        <SelectTrigger className="bg-slate-50 border-slate-200 focus:bg-white">
-                                            <SelectValue placeholder="Izvēlieties tēmu..." />
+                                        <SelectTrigger className="h-11 w-full rounded-md border-slate-300 bg-white px-3">
+                                            <SelectValue placeholder="Izvēlieties" />
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        <SelectItem value="jumta_montaza">Jumta montāža / Maiņa</SelectItem>
-                                        <SelectItem value="siltinasana">Bēniņu siltināšana</SelectItem>
-                                        <SelectItem value="remonts">Steidzams remonts</SelectItem>
-                                        <SelectItem value="komerc">Industriālais objekts</SelectItem>
+                                        <SelectItem value="jumta_montaza">Jumta montāža / maiņa</SelectItem>
+                                        <SelectItem value="siltinasana">Siltināšana</SelectItem>
+                                        <SelectItem value="remonts">Jumta remonts</SelectItem>
+                                        <SelectItem value="komerc">Komercobjekts</SelectItem>
                                         <SelectItem value="cits">Cits jautājums</SelectItem>
                                     </SelectContent>
                                 </Select>
@@ -146,16 +156,31 @@ export default function LeadForm() {
                         )}
                     />
 
+                    <div className="lg:col-span-2">
+                        <label htmlFor="roof-photo" className="text-sm font-bold text-slate-800">
+                            Jumta foto <span className="font-medium text-slate-400">(pēc izvēles)</span>
+                        </label>
+                        <Input
+                            id="roof-photo"
+                            type="file"
+                            accept="image/*"
+                            className="mt-1 h-11 rounded-md border-slate-300 bg-white px-3 py-2 file:mr-3 file:rounded-sm file:border-0 file:bg-slate-100 file:px-3 file:py-1 file:text-sm file:font-bold file:text-slate-700"
+                        />
+                        <p className="mt-1 text-xs text-slate-500">
+                            Foto palīdz ātrāk saprast jumta stāvokli un sagatavot precīzākus jautājumus.
+                        </p>
+                    </div>
+
                     <FormField
                         control={form.control}
                         name="message"
                         render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="font-semibold text-slate-700">Papildus info (pēc izvēles)</FormLabel>
+                            <FormItem className="lg:col-span-2">
+                                <FormLabel className="text-sm font-bold text-slate-800">Objekta apraksts</FormLabel>
                                 <FormControl>
                                     <Textarea
-                                        placeholder="Vēlos nomainīt veco šīferi uz metāla jumtu. Aptuvenā platība 150m2..."
-                                        className="min-h-[100px] bg-slate-50 border-slate-200 focus:bg-white resize-none"
+                                        placeholder="Īsi aprakstiet jumtu, aptuveno platību, vietu un vēlamo darbu."
+                                        className="min-h-[118px] resize-none rounded-md border-slate-300 bg-white px-3 py-3"
                                         {...field}
                                     />
                                 </FormControl>
@@ -164,26 +189,26 @@ export default function LeadForm() {
                         )}
                     />
 
-                    <Button
-                        type="submit"
-                        className="w-full bg-primary hover:bg-red-700 text-white font-bold py-6 text-lg shadow-md transition-all active:scale-[0.98]"
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? (
-                            <>
-                                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                                Sūta...
-                            </>
-                        ) : (
-                            <>
-                                Saņemt Piedāvājumu <Send className="ml-2 h-5 w-5" />
-                            </>
-                        )}
-                    </Button>
+                    <div className="flex flex-col gap-3 lg:col-span-2 sm:flex-row sm:items-center">
+                        <Button
+                            type="submit"
+                            className="h-12 rounded-md bg-brand px-8 text-base font-black text-white shadow-none hover:brightness-110"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? (
+                                <>
+                                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                                    Sūta...
+                                </>
+                            ) : (
+                                "Nosūtīt pieteikumu"
+                            )}
+                        </Button>
 
-                    <p className="text-xs text-center text-slate-400 mt-4">
-                        Nosūtot pieteikumu, Jūs piekrītat datu apstrādei piedāvājuma sagatavošanas nolūkos.
-                    </p>
+                        <p className="max-w-md text-xs leading-relaxed text-slate-500">
+                            Nosūtot pieteikumu, jūs piekrītat datu apstrādei piedāvājuma sagatavošanai.
+                        </p>
+                    </div>
                 </form>
             </Form>
         </div>

@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 import { CONTACT_INFO, NAVIGATION_LINKS } from "@/lib/constants";
 import Container from "@/components/layout/Container";
-
+import SocialLinks from "@/components/shared/SocialLinks";
 import Logo from "../shared/Logo";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
-    // SEO Service Links
     const serviceLinks = [
         { name: "Jumtu ieklāšana", href: "/pakalpojumi" },
         { name: "Jumtu renovācija", href: "/pakalpojumi" },
@@ -17,52 +16,46 @@ export default function Footer() {
     ];
 
     return (
-        // Added a top red border (border-t-4 border-primary) to match the brand style
-        <footer className="bg-slate-900 text-slate-300 border-t-4 border-primary">
+        <footer className="border-t-4 border-brand bg-black text-slate-300">
             <Container>
                 <div className="py-12 md:py-16">
-                    <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
 
-                        {/* 1. Brand & Logo */}
-                        <div className="flex flex-col gap-6">
-                            <Link href="/" className="flex items-center gap-2 group">
-                                <Logo width={50} height={50} />
+                        {/* Brand */}
+                        <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1">
+                            <Link href="/" className="flex items-center gap-3 group w-fit">
+                                <Logo width={48} height={48} />
                                 <div className="flex flex-col leading-none">
-                                    <span className="text-xl font-black tracking-tighter text-white group-hover:text-primary transition-colors">
+                                    <span className="text-xl font-black tracking-tight text-white group-hover:text-brand transition-colors">
                                         IS JUMTI
                                     </span>
-                                    <span className="text-[10px] text-slate-500 font-bold tracking-wide uppercase">
+                                    <span className="text-[10px] text-slate-400 font-bold tracking-[0.2em] uppercase mt-1">
                                         Jumtu Eksperti
                                     </span>
                                 </div>
                             </Link>
 
                             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
-                                Profesionāli jumtu darbi ar vairāk nekā 15 gadu pieredzi.
-                                Mēs garantējam kvalitāti, kas kalpo paaudzēm.
+                                Profesionāli jumtu darbi ar 15+ gadu pieredzi. Bāze {CONTACT_INFO.base}, strādājam visā Latvijā.
                             </p>
 
-                            <div className="flex gap-4">
-                                <Link href="#" className="text-slate-400 hover:text-white transition-colors">
-                                    <Facebook className="h-5 w-5" />
-                                    <span className="sr-only">Facebook</span>
-                                </Link>
-                                <Link href="#" className="text-slate-400 hover:text-white transition-colors">
-                                    <Instagram className="h-5 w-5" />
-                                    <span className="sr-only">Instagram</span>
-                                </Link>
+                            <div>
+                                <p className="text-[10px] font-bold text-slate-500 mb-2 uppercase tracking-widest">
+                                    Seko mums
+                                </p>
+                                <SocialLinks variant="ghost-dark" size="md" />
                             </div>
                         </div>
 
-                        {/* 2. Navigation */}
+                        {/* Sections */}
                         <div>
-                            <h3 className="text-lg font-bold text-white mb-6">Sadaļas</h3>
-                            <ul className="space-y-3 text-sm font-medium">
+                            <h3 className="text-base font-bold text-white mb-5 uppercase tracking-wider">Sadaļas</h3>
+                            <ul className="space-y-3 text-sm">
                                 {NAVIGATION_LINKS.map((item) => (
                                     <li key={item.href}>
                                         <Link
                                             href={item.href}
-                                            className="hover:text-primary transition-colors duration-200"
+                                            className="hover:text-white transition-colors duration-200"
                                         >
                                             {item.name}
                                         </Link>
@@ -71,40 +64,48 @@ export default function Footer() {
                             </ul>
                         </div>
 
-                        {/* 3. Services */}
+                        {/* Services + areas */}
                         <div>
-                            <h3 className="text-lg font-bold text-white mb-6">Pakalpojumi</h3>
-                            <ul className="space-y-3 text-sm font-medium">
+                            <h3 className="text-base font-bold text-white mb-5 uppercase tracking-wider">Pakalpojumi</h3>
+                            <ul className="space-y-3 text-sm">
                                 {serviceLinks.map((item) => (
                                     <li key={item.name}>
                                         <Link
                                             href={item.href}
-                                            className="hover:text-primary transition-colors duration-200"
+                                            className="hover:text-white transition-colors duration-200"
                                         >
                                             {item.name}
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
+
+                            <h3 className="text-base font-bold text-white mt-8 mb-3 uppercase tracking-wider">Apkalpojam</h3>
+                            <p className="text-sm text-slate-400 leading-relaxed">
+                                {CONTACT_INFO.serviceCities.join(" · ")}
+                            </p>
                         </div>
 
-                        {/* 4. Contact Info */}
+                        {/* Contact */}
                         <div>
-                            <h3 className="text-lg font-bold text-white mb-6">Kontakti</h3>
-                            <ul className="space-y-5 text-sm">
-                                <li className="flex items-start gap-3 group">
-                                    <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5 group-hover:text-white transition-colors" />
-                                    <span className="group-hover:text-white transition-colors">{CONTACT_INFO.address}</span>
+                            <h3 className="text-base font-bold text-white mb-5 uppercase tracking-wider">Kontakti</h3>
+                            <ul className="space-y-4 text-sm">
+                                <li className="flex items-start gap-3">
+                                    <MapPin className="h-4 w-4 text-brand shrink-0 mt-0.5" />
+                                    <span>
+                                        <span className="text-white font-semibold">{CONTACT_INFO.base}</span>
+                                        <span className="block text-xs text-slate-400">{CONTACT_INFO.serviceArea}</span>
+                                    </span>
                                 </li>
-                                <li className="flex items-center gap-3 group">
-                                    <Phone className="h-5 w-5 text-primary shrink-0 group-hover:text-white transition-colors" />
-                                    <a href={`tel:${CONTACT_INFO.phone}`} className="hover:text-white transition-colors font-semibold">
+                                <li className="flex items-center gap-3">
+                                    <Phone className="h-4 w-4 text-brand shrink-0" />
+                                    <a href={`tel:${CONTACT_INFO.phone}`} className="text-white hover:text-brand transition-colors font-bold">
                                         {CONTACT_INFO.phoneDisplay}
                                     </a>
                                 </li>
-                                <li className="flex items-center gap-3 group">
-                                    <Mail className="h-5 w-5 text-primary shrink-0 group-hover:text-white transition-colors" />
-                                    <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-white transition-colors">
+                                <li className="flex items-center gap-3">
+                                    <Mail className="h-4 w-4 text-brand shrink-0" />
+                                    <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-white transition-colors break-all">
                                         {CONTACT_INFO.email}
                                     </a>
                                 </li>
@@ -112,12 +113,13 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Bottom Bar */}
-                    <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-                        <p>
-                            &copy; {currentYear} IS JUMTI. Visas tiesības aizsargātas.
-                        </p>
-                        <div className="flex gap-6">
+                    {/* Bottom: tiny legal */}
+                    <div className="mt-12 pt-6 border-t border-white/10 flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center text-[11px] text-slate-500">
+                        <div className="space-y-0.5">
+                            <p>&copy; {currentYear} {CONTACT_INFO.company.legalName}. Visas tiesības aizsargātas.</p>
+                            <p>Reģ. Nr. {CONTACT_INFO.company.regNo}</p>
+                        </div>
+                        <div className="flex gap-5">
                             <Link href="/privatuma-politika" className="hover:text-white transition-colors">
                                 Privātuma politika
                             </Link>
