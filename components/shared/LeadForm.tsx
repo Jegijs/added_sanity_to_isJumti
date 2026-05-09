@@ -72,17 +72,17 @@ export default function LeadForm() {
     }
 
     return (
-        <div className="p-5 sm:p-7">
+        <div className="p-4 sm:p-6 lg:p-7">
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4 lg:grid-cols-2">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-x-6 gap-y-5 lg:grid-cols-2">
                     <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-sm font-bold text-slate-800">Vārds, uzvārds</FormLabel>
+                                <FormLabel className="text-sm font-bold text-foreground">Vārds, uzvārds</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Jānis Bērziņš" className="h-11 rounded-md border-slate-300 bg-white px-3" {...field} />
+                                    <Input placeholder="Jānis Bērziņš" className="h-12 rounded-lg border-border/60 bg-background px-4 shadow-sm focus-visible:ring-primary/20" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -94,9 +94,9 @@ export default function LeadForm() {
                         name="phone"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-sm font-bold text-slate-800">Tālrunis</FormLabel>
+                                <FormLabel className="text-sm font-bold text-foreground">Tālrunis</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="+371 2xxxxxxx" type="tel" className="h-11 rounded-md border-slate-300 bg-white px-3" {...field} />
+                                    <Input placeholder="+371 2xxxxxxx" type="tel" className="h-12 rounded-lg border-border/60 bg-background px-4 shadow-sm focus-visible:ring-primary/20" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -108,9 +108,9 @@ export default function LeadForm() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-sm font-bold text-slate-800">E-pasts <span className="font-medium text-slate-400">(pēc izvēles)</span></FormLabel>
+                                <FormLabel className="text-sm font-bold text-foreground">E-pasts <span className="font-medium text-muted-foreground/60">(pēc izvēles)</span></FormLabel>
                                 <FormControl>
-                                    <Input placeholder="janis@epasts.lv" type="email" className="h-11 rounded-md border-slate-300 bg-white px-3" {...field} />
+                                    <Input placeholder="janis@epasts.lv" type="email" className="h-12 rounded-lg border-border/60 bg-background px-4 shadow-sm focus-visible:ring-primary/20" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -122,9 +122,9 @@ export default function LeadForm() {
                         name="location"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-sm font-bold text-slate-800">Objekta vieta <span className="font-medium text-slate-400">(pēc izvēles)</span></FormLabel>
+                                <FormLabel className="text-sm font-bold text-foreground">Objekta vieta <span className="font-medium text-muted-foreground/60">(pēc izvēles)</span></FormLabel>
                                 <FormControl>
-                                    <Input placeholder="Jelgava, Rīga, Pierīga..." className="h-11 rounded-md border-slate-300 bg-white px-3" {...field} />
+                                    <Input placeholder="Jelgava, Rīga, Pierīga..." className="h-12 rounded-lg border-border/60 bg-background px-4 shadow-sm focus-visible:ring-primary/20" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -135,11 +135,11 @@ export default function LeadForm() {
                         control={form.control}
                         name="serviceType"
                         render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="text-sm font-bold text-slate-800">Pakalpojums</FormLabel>
+                            <FormItem className="lg:col-span-2">
+                                <FormLabel className="text-sm font-bold text-foreground">Pakalpojums</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                     <FormControl>
-                                        <SelectTrigger className="h-11 w-full rounded-md border-slate-300 bg-white px-3">
+                                        <SelectTrigger className="h-12 w-full rounded-lg border-border/60 bg-background px-4 shadow-sm focus:ring-primary/20">
                                             <SelectValue placeholder="Izvēlieties" />
                                         </SelectTrigger>
                                     </FormControl>
@@ -157,16 +157,16 @@ export default function LeadForm() {
                     />
 
                     <div className="lg:col-span-2">
-                        <label htmlFor="roof-photo" className="text-sm font-bold text-slate-800">
-                            Jumta foto <span className="font-medium text-slate-400">(pēc izvēles)</span>
+                        <label htmlFor="roof-photo" className="text-sm font-bold text-foreground">
+                            Jumta foto <span className="font-medium text-muted-foreground/60">(pēc izvēles)</span>
                         </label>
                         <Input
                             id="roof-photo"
                             type="file"
                             accept="image/*"
-                            className="mt-1 h-11 rounded-md border-slate-300 bg-white px-3 py-2 file:mr-3 file:rounded-sm file:border-0 file:bg-slate-100 file:px-3 file:py-1 file:text-sm file:font-bold file:text-slate-700"
+                            className="mt-2 h-12 rounded-lg border border-border/60 bg-background px-0 py-0 file:mr-4 file:h-full file:rounded-l-lg file:border-0 file:bg-primary/10 file:px-5 file:py-0 file:text-sm file:font-bold file:text-primary hover:file:bg-primary/15 file:transition-colors file:cursor-pointer cursor-pointer shadow-sm text-muted-foreground"
                         />
-                        <p className="mt-1 text-xs text-slate-500">
+                        <p className="mt-2 text-xs text-muted-foreground/80">
                             Foto palīdz ātrāk saprast jumta stāvokli un sagatavot precīzākus jautājumus.
                         </p>
                     </div>
@@ -176,11 +176,11 @@ export default function LeadForm() {
                         name="message"
                         render={({ field }) => (
                             <FormItem className="lg:col-span-2">
-                                <FormLabel className="text-sm font-bold text-slate-800">Objekta apraksts</FormLabel>
+                                <FormLabel className="text-sm font-bold text-foreground">Objekta apraksts</FormLabel>
                                 <FormControl>
                                     <Textarea
                                         placeholder="Īsi aprakstiet jumtu, aptuveno platību, vietu un vēlamo darbu."
-                                        className="min-h-[118px] resize-none rounded-md border-slate-300 bg-white px-3 py-3"
+                                        className="min-h-[120px] resize-none rounded-lg border-border/60 bg-background px-4 py-4 shadow-sm focus-visible:ring-primary/20"
                                         {...field}
                                     />
                                 </FormControl>
@@ -189,10 +189,10 @@ export default function LeadForm() {
                         )}
                     />
 
-                    <div className="flex flex-col gap-3 lg:col-span-2 sm:flex-row sm:items-center">
+                    <div className="flex flex-col gap-4 border-t border-border/60 pt-5 lg:col-span-2 sm:flex-row sm:items-center">
                         <Button
                             type="submit"
-                            className="h-12 rounded-md bg-brand px-8 text-base font-black text-white shadow-none hover:brightness-110"
+                            className="h-14 w-full rounded-full bg-primary px-8 text-base font-black text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all active:scale-[0.98] sm:w-auto sm:min-w-[260px]"
                             disabled={isSubmitting}
                         >
                             {isSubmitting ? (
@@ -205,8 +205,8 @@ export default function LeadForm() {
                             )}
                         </Button>
 
-                        <p className="max-w-md text-xs leading-relaxed text-slate-500">
-                            Nosūtot pieteikumu, jūs piekrītat datu apstrādei piedāvājuma sagatavošanai.
+                        <p className="max-w-xl text-xs leading-relaxed text-muted-foreground">
+                            Pietiek ar īsu aprakstu un telefonu. Nosūtot pieteikumu, jūs piekrītat datu apstrādei piedāvājuma sagatavošanai.
                         </p>
                     </div>
                 </form>

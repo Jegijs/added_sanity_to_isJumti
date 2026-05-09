@@ -18,7 +18,7 @@ function TikTokIcon({ className }: { className?: string }) {
     );
 }
 
-type Variant = "default" | "filled" | "ghost-dark";
+type Variant = "default" | "filled" | "ghost-dark" | "drawer";
 type Size = "sm" | "md" | "lg";
 
 const sizeMap = {
@@ -30,13 +30,15 @@ const sizeMap = {
 const variantMap: Record<Variant, string> = {
     // For light backgrounds (header, contact section)
     default:
-        "text-slate-500 hover:text-white hover:bg-[#E30613] border border-slate-200 hover:border-[#E30613]",
+        "text-muted-foreground hover:text-primary-foreground hover:bg-primary border border-border/50 hover:border-primary shadow-sm",
     // Filled brand chips on light bg
     filled:
-        "text-white bg-slate-900 hover:bg-[#E30613]",
+        "text-primary-foreground bg-foreground hover:bg-primary shadow-md",
     // For dark backgrounds (footer, mobile-nav drawer footer)
     "ghost-dark":
-        "text-white bg-white/10 border border-white/15 hover:bg-[#E30613] hover:border-[#E30613]",
+        "text-muted-foreground hover:text-primary-foreground bg-primary/5 border border-primary/20 hover:bg-primary hover:border-primary",
+    drawer:
+        "text-white bg-white/10 border border-white/15 hover:bg-white hover:text-primary hover:border-white",
 };
 
 const links: { key: keyof typeof SOCIAL_LINKS; label: string; Icon: React.ComponentType<{ className?: string }> }[] = [

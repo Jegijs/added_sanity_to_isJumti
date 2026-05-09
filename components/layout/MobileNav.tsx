@@ -19,7 +19,7 @@ export default function MobileNav() {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="lg:hidden h-14 w-14 text-white hover:bg-white/15 hover:text-white rounded-xl"
+                    className="lg:hidden h-14 w-14 rounded-xl text-foreground hover:bg-primary/10 hover:text-primary"
                 >
                     <Menu className="size-9 stroke-[2.5]" />
                     <span className="sr-only">Atvērt izvēlni</span>
@@ -70,20 +70,26 @@ export default function MobileNav() {
                             ))}
                         </nav>
 
-                        {/* Trust mini-card */}
-                        <div className="mt-6 space-y-2.5 rounded-xl bg-white/10 border border-white/15 backdrop-blur-sm p-4 text-sm">
-                            <div className="flex items-start gap-2.5">
-                                <MapPin className="h-4 w-4 text-red-200 mt-0.5 shrink-0" />
+                        {/* Trust info */}
+                        <div className="mt-6 space-y-3 border-t border-white/15 pt-5 text-sm">
+                            <div className="flex items-center gap-3">
+                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10">
+                                    <MapPin className="h-4 w-4 text-white" />
+                                </span>
                                 <span className="text-white/90">
                                     <span className="font-bold text-white">{CONTACT_INFO.base}</span> · {CONTACT_INFO.serviceArea}
                                 </span>
                             </div>
-                            <div className="flex items-start gap-2.5">
-                                <Clock className="h-4 w-4 text-red-200 mt-0.5 shrink-0" />
-                                <span className="text-white/90">P–S 8:00 – 19:00</span>
+                            <div className="flex items-center gap-3">
+                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10">
+                                    <Clock className="h-4 w-4 text-white" />
+                                </span>
+                                <span className="text-white/90">24/7</span>
                             </div>
-                            <div className="flex items-start gap-2.5">
-                                <ShieldCheck className="h-4 w-4 text-red-200 mt-0.5 shrink-0" />
+                            <div className="flex items-center gap-3">
+                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10">
+                                    <ShieldCheck className="h-4 w-4 text-white" />
+                                </span>
                                 <span className="text-white/90">Sertificēti meistari · 30 g. garantija</span>
                             </div>
                         </div>
@@ -102,7 +108,7 @@ export default function MobileNav() {
                             <p className="text-[10px] font-bold text-white/60 mb-2 uppercase tracking-widest">
                                 Seko mums
                             </p>
-                            <SocialLinks variant="ghost-dark" size="md" />
+                            <SocialLinks variant="drawer" size="lg" />
                         </div>
                     </div>
                 </div>

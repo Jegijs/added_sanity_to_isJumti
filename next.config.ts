@@ -46,12 +46,52 @@ const nextConfig: NextConfig = {
         destination: '/blog',
       },
       {
+        source: '/padomi/:path*',
+        destination: '/blog/:path*',
+      },
+      {
         source: '/kontakti',
         destination: '/contact',
       },
       {
         source: '/privatuma-politika',
         destination: '/privacy',
+      },
+    ];
+  },
+
+  // 4. Veco WordPress URL saglabāšana
+  async redirects() {
+    return [
+      {
+        source: '/elements/galleries',
+        destination: '/galerija',
+        permanent: true,
+      },
+      {
+        source: '/elements/galleries/',
+        destination: '/galerija',
+        permanent: true,
+      },
+      {
+        source: '/2024/07/30/noteku-sistemu-uzturesana-ka-nodrosinat-efektivu-lietus-udens-novadisanu',
+        destination: '/padomi/noteku-sistemu-uzturesana',
+        permanent: true,
+      },
+      {
+        source: '/2024/07/30/ekovates-prieksrocibas-videi-draudziga-siltinasana-jusu-majam',
+        destination: '/padomi/ekovates-prieksrocibas',
+        permanent: true,
+      },
+      {
+        source: '/2024/07/30/tamesanas-pamati-ka-planot-jumta-remontu-un-renovaciju',
+        destination: '/padomi/tamesanas-pamati',
+        permanent: true,
+      },
+      {
+        source: '/2024/07/25/jumika-pakalpojumu-izmaksu-celvedis',
+        destination: '/padomi/jumika-pakalpojumu-izmaksu-celvedis',
+        permanent: true,
       },
     ];
   },

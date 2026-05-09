@@ -49,63 +49,59 @@ export default function Hero() {
     }, [paused]);
 
     return (
-        <section className="relative overflow-hidden bg-[#9f0610] text-white">
-            <div className="pointer-events-none absolute inset-0 bg-shingle-pattern opacity-[0.08]" />
+        <section className="relative overflow-hidden bg-[#8f050d] text-primary-foreground border-b border-primary/20">
+            {/* Rich brand color background with stronger roof texture */}
+            <div className="absolute inset-0 bg-[linear-gradient(145deg,#b50712_0%,#8f050d_46%,#430106_100%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-shingle-pattern opacity-45 pointer-events-none mix-blend-multiply" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(255,255,255,0.13),transparent_32%),linear-gradient(180deg,rgba(0,0,0,0.18),rgba(0,0,0,0.36))] pointer-events-none" />
+            <div className="absolute top-0 right-[-10%] w-[800px] h-[800px] bg-white/8 blur-[120px] rounded-full pointer-events-none" />
+            
             <div className="relative container mx-auto px-4 py-12 sm:px-6 lg:py-18">
                 <div className="grid gap-8 lg:grid-cols-[0.48fr_0.52fr] lg:items-center lg:gap-12">
 
                     {/* LEFT — content (always first on mobile) */}
                     <div>
-                        <h1 className="max-w-2xl text-[2.5rem] font-black leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
+                        <div className="inline-flex items-center rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-3 py-1 text-sm font-medium text-primary-foreground mb-6 shadow-sm">
+                            <span className="flex h-2 w-2 rounded-full bg-primary-foreground mr-2" />
+                            Premium jumtu risinājumi
+                        </div>
+                        <h1 className="max-w-2xl text-[2.5rem] font-black leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl text-primary-foreground">
                             Jūsu jumts ir mūsu atbildība.
                         </h1>
 
-                        <p className="mt-5 max-w-xl text-base leading-relaxed text-red-50/90 sm:text-lg">
+                        <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/90 sm:text-lg">
                             Jumtu izbūve, renovācija un ekovates siltināšana visā Latvijā ar rūpīgu materiālu izvēli un oficiālu garantiju.
                         </p>
 
-                        <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-white/90 lg:max-w-xl">
+                        <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-primary-foreground lg:max-w-xl">
                             <li className="flex items-center gap-2 whitespace-nowrap">
-                                <Check className="h-4 w-4 shrink-0 text-red-100" /> Bezmaksas apsekošana
+                                <Check className="h-4 w-4 shrink-0 text-primary-foreground" /> Bezmaksas apsekošana
                             </li>
                             <li className="flex items-center gap-2 whitespace-nowrap">
-                                <Check className="h-4 w-4 shrink-0 text-red-100" /> Tāme 24h laikā
+                                <Check className="h-4 w-4 shrink-0 text-primary-foreground" /> Tāme 24h laikā
                             </li>
                             <li className="flex items-center gap-2 whitespace-nowrap">
-                                <Check className="h-4 w-4 shrink-0 text-red-100" /> Garantija darbiem
+                                <Check className="h-4 w-4 shrink-0 text-primary-foreground" /> Garantija darbiem
                             </li>
                         </ul>
 
-                        <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                            <Button
-                                asChild
-                                size="lg"
-                                className="h-12 w-full rounded-md bg-white px-6 font-bold text-red-700 shadow-none hover:bg-red-50 sm:w-auto"
-                            >
-                                <Link href="/izmaksas">
-                                    Aprēķināt izmaksas
-                                    <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                            </Button>
-                            <Button
-                                asChild
-                                size="lg"
-                                variant="outline"
-                                className="h-12 w-full rounded-md border-white/35 bg-transparent px-6 text-white hover:bg-white/10 hover:text-white sm:w-auto"
-                            >
-                                <Link href={`tel:${CONTACT_INFO.phone}`}>
-                                    <Phone className="mr-2 h-4 w-4 shrink-0" />
-                                    {CONTACT_INFO.phoneDisplay}
-                                </Link>
-                            </Button>
+                        <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
+                            <Link href="/izmaksas" className="inline-flex h-14 w-full sm:w-auto items-center justify-center rounded-full bg-background px-8 font-black text-primary hover:bg-background/90 shadow-xl active:scale-95 transition-all">
+                                Aprēķināt izmaksas
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
+                            <Link href={`tel:${CONTACT_INFO.phone}`} className="inline-flex h-14 w-full sm:w-auto items-center justify-center rounded-full border border-primary-foreground/30 bg-black/10 backdrop-blur-sm px-8 font-bold text-primary-foreground hover:bg-black/20 active:scale-95 transition-all">
+                                <Phone className="mr-2 h-5 w-5 shrink-0 text-primary-foreground" />
+                                {CONTACT_INFO.phoneDisplay}
+                            </Link>
                         </div>
 
                         {/* Stats */}
-                        <div className="mt-8 grid max-w-md grid-cols-3 gap-3 border-t border-white/20 pt-5">
+                        <div className="mt-10 grid max-w-md grid-cols-3 gap-3 border-t border-primary-foreground/20 pt-6">
                             {stats.map((s) => (
                                 <div key={s.label}>
-                                    <div className="text-2xl font-black tracking-tight">{s.value}</div>
-                                    <div className="mt-0.5 text-[10px] uppercase tracking-wider text-red-100/70 sm:text-xs">{s.label}</div>
+                                    <div className="text-3xl font-black tracking-tight text-primary-foreground">{s.value}</div>
+                                    <div className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-primary-foreground/70">{s.label}</div>
                                 </div>
                             ))}
                         </div>
@@ -117,7 +113,7 @@ export default function Hero() {
                         onMouseEnter={() => setPaused(true)}
                         onMouseLeave={() => setPaused(false)}
                     >
-                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md bg-black/20">
+                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-primary-foreground/10 bg-black/10 shadow-2xl">
                             {heroSlides.map((slide, i) => (
                                 <div
                                     key={slide.id}
@@ -134,8 +130,8 @@ export default function Hero() {
                                     />
                                 </div>
                             ))}
-                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                                <p className="text-xs font-bold uppercase tracking-wider text-white">
+                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
+                                <p className="text-sm font-bold uppercase tracking-widest text-white">
                                     {heroSlides[current].category}
                                 </p>
                             </div>
@@ -150,14 +146,14 @@ export default function Hero() {
                                         type="button"
                                         onClick={() => setCurrent(index)}
                                         aria-label={`Rādīt: ${slide.category}`}
-                                        className={`h-1.5 flex-1 rounded-full transition ${isActive ? "bg-white" : "bg-white/30 hover:bg-white/50"}`}
+                                        className={`h-2 flex-1 rounded-full transition-all duration-300 ${isActive ? "bg-primary-foreground" : "bg-primary-foreground/30 hover:bg-primary-foreground/50"}`}
                                     >
                                         <span className="sr-only">{slide.category}</span>
                                         <span className="block h-full overflow-hidden rounded-full bg-transparent">
                                             {isActive && (
                                                 <span
                                                     key={`bar-${current}`}
-                                                    className="block h-full w-full origin-left bg-white"
+                                                    className="block h-full w-full origin-left bg-primary-foreground"
                                                     style={{ animation: `slideProgress ${SLIDE_DELAY}ms linear forwards` }}
                                                 />
                                             )}
