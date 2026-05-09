@@ -70,6 +70,7 @@ export default function ServicesPage() {
                                             alt={service.title}
                                             fill
                                             sizes="(max-width: 768px) 100vw, 33vw"
+                                            quality={70}
                                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
                                         <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />

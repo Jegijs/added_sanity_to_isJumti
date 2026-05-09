@@ -56,6 +56,7 @@ export default function BlogPage() {
                                             alt={post.title}
                                             fill
                                             sizes="(max-width: 768px) 100vw, 50vw"
+                                            quality={70}
                                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
                                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />

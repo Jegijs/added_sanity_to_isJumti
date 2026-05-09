@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 
-// Components
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import CookieConsent from "@/components/shared/CookieConsent";
-import WhatsAppButton from "@/components/shared/WhatsAppButton";
-import LeadModal from "@/components/shared/LeadModal";
-import MobileStickyCTA from "@/components/shared/MobileStickyCTA";
+
+const CookieConsent = dynamic(() => import("@/components/shared/CookieConsent"));
+const WhatsAppButton = dynamic(() => import("@/components/shared/WhatsAppButton"));
+const LeadModal = dynamic(() => import("@/components/shared/LeadModal"));
+const MobileStickyCTA = dynamic(() => import("@/components/shared/MobileStickyCTA"));
 
 import "./globals.css";
 
@@ -48,6 +49,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="lv" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://www.isjumti.lv" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.isjumti.lv" />
+      </head>
       <body className={`${inter.className} flex min-h-screen flex-col`}>
         <Header />
 

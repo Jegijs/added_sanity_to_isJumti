@@ -16,7 +16,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="border-t border-border bg-background text-muted-foreground">
+        <footer className="border-t border-border bg-background text-foreground/75">
             <Container>
                 <div className="py-12 md:py-16">
                     <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -116,7 +116,7 @@ export default function Footer() {
                     </div>
 
                     {/* Bottom: tiny legal */}
-                    <div className="mt-12 pt-6 border-t border-border flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center text-[11px] text-muted-foreground/60">
+                    <div className="mt-12 pt-6 border-t border-border flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center text-[11px] text-foreground/70">
                         <div className="space-y-0.5">
                             <p>&copy; {currentYear} {CONTACT_INFO.company.legalName}. Visas tiesības aizsargātas.</p>
                             <p>Reģ. Nr. {CONTACT_INFO.company.regNo}</p>
