@@ -8,8 +8,9 @@ import { Button } from "@/components/ui/button";
 import { estimateChecklist, pricingDeliverables, pricingFactors } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-    title: "Jumta izmaksas | IS JUMTI",
-    description: "Noskaidrojiet jumta montāžas, renovācijas un siltināšanas izmaksas. Precīza tāme pēc objekta informācijas un apsekošanas.",
+    title: "Jumtu darbu cenas un tāme – izcenojumi par m²",
+    description:
+        "Jumtu darbu izmaksas: jumta seguma maiņa no 15 €/m², bitumena šindeļi no 12 €/m², bēniņu siltināšana no 5 €/m², noteksistēmas no 9 €/m. Bezmaksas tāme un apsekošana.",
 };
 
 export default function PricingPage() {
@@ -49,6 +50,54 @@ export default function PricingPage() {
                             ))}
                         </ul>
                     </div>
+                </div>
+            </section>
+
+            <section className="bg-background py-16 lg:py-20 border-b border-border">
+                <div className="container mx-auto px-4 md:px-6">
+                    <div className="mb-10 max-w-3xl">
+                        <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+                            <span className="w-6 h-[2px] bg-primary" /> Orientējošas cenas
+                        </p>
+                        <h2 className="mt-3 text-3xl font-black tracking-tight text-foreground sm:text-5xl">
+                            Jumtu darbu cenas par m²
+                        </h2>
+                        <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                            Zemāk redzamas orientējošas izejas cenas. Galīgo summu nosaka jumta platība, materiāla izvēle, konstrukcijas stāvoklis un piekļuves apstākļi – precīzu tāmi sagatavojam pēc apsekošanas.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm">
+                        <table className="w-full text-left text-sm sm:text-base">
+                            <thead className="bg-muted/40 text-foreground">
+                                <tr>
+                                    <th className="px-4 py-4 font-bold sm:px-6">Pakalpojums</th>
+                                    <th className="px-4 py-4 font-bold text-right sm:px-6">Cena</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-border/50">
+                                {[
+                                    { service: "Jumta seguma maiņa (metāla profils, valcprofils)", price: "no 15 €/m²" },
+                                    { service: "Dakstiņu jumta ieklāšana", price: "no 18 €/m²" },
+                                    { service: "Bitumena šindeļu ieklāšana", price: "no 12 €/m²" },
+                                    { service: "Bitumena ruļļu ieklāšana (lēzeniem jumtiem)", price: "no 8 €/m²" },
+                                    { service: "Plakano jumtu hidroizolācija (PVC membrāna)", price: "no 14 €/m²" },
+                                    { service: "Jumta koka konstrukcijas izbūve", price: "no 25 €/m²" },
+                                    { service: "Bēniņu siltināšana ar ekovati", price: "no 5 €/m²" },
+                                    { service: "Noteksistēmas montāža", price: "no 9 €/m" },
+                                    { service: "Sniega barjeru montāža", price: "no 10 €/m" },
+                                    { service: "Jumta apsekošana un tāme", price: "bezmaksas" },
+                                ].map((row) => (
+                                    <tr key={row.service} className="hover:bg-muted/20 transition-colors">
+                                        <td className="px-4 py-4 text-card-foreground sm:px-6">{row.service}</td>
+                                        <td className="px-4 py-4 text-right font-bold text-primary sm:px-6 whitespace-nowrap">{row.price}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p className="mt-4 text-xs text-muted-foreground">
+                        Cenas norādītas bez PVN un materiāliem. Galīgo izmaksu apstiprinām tāmē pēc objekta informācijas vai apsekošanas.
+                    </p>
                 </div>
             </section>
 

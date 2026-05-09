@@ -7,8 +7,9 @@ import ContactSection from "@/components/sections/ContactSection";
 import { blogPosts } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-    title: "Padomi | IS JUMTI",
-    description: "Praktiski padomi par jumtu uzturēšanu, tāmēšanu, siltināšanu un izmaksām Latvijas mājām.",
+    title: "Padomi par jumtiem – uzturēšana, izmaksas, materiāli",
+    description:
+        "Praktiski padomi par jumtu uzturēšanu, jumta seguma izvēli, bēniņu siltināšanu un jumtu darbu izmaksu plānošanu Latvijas mājām.",
 };
 
 const dateFormatter = new Intl.DateTimeFormat("lv-LV", {

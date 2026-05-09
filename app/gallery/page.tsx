@@ -7,8 +7,9 @@ import ContactSection from "@/components/sections/ContactSection";
 import { galleryProjects } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-    title: "Galerija | IS JUMTI",
-    description: "IS JUMTI paveiktie jumtu montāžas, renovācijas, komercobjektu un siltināšanas darbi.",
+    title: "Paveiktie jumtu darbi un projekti Latvijā",
+    description:
+        "Paveiktie IS JUMTI darbi: jumtu montāža un renovācija privātmājām, daudzdzīvokļu namiem un komercobjektiem visā Latvijā. Metāla, dakstiņu un bitumena segumi.",
 };
 
 export default function GalleryPage() {

@@ -7,6 +7,34 @@ import {
     Snowflake,
     ThermometerSun,
 } from "lucide-react";
+import { CONTACT_INFO } from "./constants";
+
+export const faqData = [
+    {
+        question: "Cik ilgā laikā sagatavojat tāmi?",
+        answer: "Pēc objekta apsekošanas vai precīza projekta saņemšanas tāmi parasti sagatavojam 24 stundu laikā. Apsekošana un sākotnējā konsultācija ir bezmaksas.",
+    },
+    {
+        question: "Vai strādājat ziemā?",
+        answer: "Jā, ja konkrētais darbs un laikapstākļi to ļauj. Konstrukciju izbūvi, skārda jumtu montāžu un bēniņu siltināšanu bieži var plānot arī ziemas periodā.",
+    },
+    {
+        question: "Kādus jumta seguma materiālus izmantojat?",
+        answer: "Strādājam ar metāla jumtiem (valcprofils, dakstiņprofils), māla un betona dakstiņiem, bitumena šindeļiem un ruļļmateriāliem, kā arī plakano jumtu hidroizolācijas membrānām. Konkrētu risinājumu iesakām pēc jumta stāvokļa, slīpuma un budžeta.",
+    },
+    {
+        question: "Vai jumtu var mainīt, kamēr mājā dzīvo cilvēki?",
+        answer: "Vairumā gadījumu jā. Darbus plānojam pa posmiem, lai ēka nepaliktu atvērta un būtu pasargāta no nokrišņiem.",
+    },
+    {
+        question: "Cik gadu garantija ir paveiktajiem darbiem?",
+        answer: "Sniedzam oficiālu garantiju paveiktajiem darbiem un izmantotajiem materiāliem. Konkrētu garantijas termiņu norādām tāmē atkarībā no izvēlētā seguma un darbu apjoma.",
+    },
+    {
+        question: "Kur pieņemat objektus?",
+        answer: `Bāze ir ${CONTACT_INFO.base}, bet objektus pieņemam visā Latvijā – Rīgā, Pierīgā, Zemgalē, Kurzemē un Latgalē. Loģistikas izmaksas norādām tāmē.`,
+    },
+];
 
 export const serviceItems = [
     {

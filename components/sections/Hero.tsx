@@ -66,11 +66,11 @@ export default function Hero() {
                             Premium jumtu risinājumi
                         </div>
                         <h1 className="max-w-2xl text-[2.5rem] font-black leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl text-primary-foreground">
-                            Jūsu jumts ir mūsu atbildība.
+                            Jumtu darbi visā Latvijā – montāža, remonts un renovācija.
                         </h1>
 
                         <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/90 sm:text-lg">
-                            Jumtu izbūve, renovācija un ekovates siltināšana visā Latvijā ar rūpīgu materiālu izvēli un oficiālu garantiju.
+                            Metāla jumti, dakstiņi, bitumena šindeļi un plakano jumtu hidroizolācija. Bēniņu siltināšana ar ekovati. 15 gadu pieredze, oficiāla garantija un bezmaksas tāme.
                         </p>
 
                         <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-primary-foreground lg:max-w-xl">

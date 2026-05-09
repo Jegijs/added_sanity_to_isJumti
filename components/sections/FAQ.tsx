@@ -4,34 +4,16 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
-import { CONTACT_INFO } from "@/lib/constants";
-
-const faqData = [
-    {
-        question: "Cik ilgā laikā sagatavojat tāmi?",
-        answer: "Pēc objekta apsekošanas vai precīza projekta saņemšanas tāmi parasti sagatavojam 24 stundu laikā.",
-    },
-    {
-        question: "Vai strādājat ziemā?",
-        answer: "Jā, ja konkrētais darbs un laikapstākļi to ļauj. Konstrukciju izbūvi, skārda jumtu montāžu un bēniņu siltināšanu bieži var plānot arī ziemas periodā.",
-    },
-    {
-        question: "Kādus materiālus izmantojat?",
-        answer: "Strādājam ar sertificētiem jumta segumiem, stiprinājumiem un siltināšanas materiāliem. Konkrētu risinājumu iesakām pēc jumta stāvokļa, slīpuma un budžeta.",
-    },
-    {
-        question: "Vai jumtu var mainīt, kamēr mājā dzīvo cilvēki?",
-        answer: "Vairumā gadījumu jā. Darbus plānojam pa posmiem, lai ēka nepaliktu atvērta un būtu pasargāta no nokrišņiem.",
-    },
-    {
-        question: "Kur pieņemat objektus?",
-        answer: `Bāze ir ${CONTACT_INFO.base}, bet objektus pieņemam visā Latvijā. Loģistikas izmaksas norādām tāmē.`,
-    },
-];
+import { faqData } from "@/lib/site-content";
+import { faqPageSchema, jsonLd } from "@/lib/schema";
 
 export default function FAQ() {
     return (
         <section className="bg-background py-20 lg:py-28" id="faq">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={jsonLd(faqPageSchema(faqData))}
+            />
             <div className="container mx-auto px-4 md:px-6">
                 <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[0.35fr_0.65fr]">
                     <div>

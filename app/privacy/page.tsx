@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { CONTACT_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-    title: "Privātuma politika | IS JUMTI",
+    title: "Privātuma politika",
     description: "IS JUMTI privātuma politika un personas datu apstrādes informācija.",
 };
 

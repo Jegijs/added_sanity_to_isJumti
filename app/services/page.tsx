@@ -7,8 +7,9 @@ import ContactSection from "@/components/sections/ContactSection";
 import { processSteps, serviceItems } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-    title: "Pakalpojumi | IS JUMTI",
-    description: "Jumtu montāža, remonts, tāmēšana, projektēšana, inspekcija, noteku sistēmas un siltināšana visā Latvijā.",
+    title: "Jumtu pakalpojumi: ieklāšana, remonts, siltināšana",
+    description:
+        "Jumtu darbi visā Latvijā – metāla jumti, dakstiņu jumti, bitumena šindeļi, plakano jumtu hidroizolācija, bēniņu siltināšana un noteksistēmu montāža. Bezmaksas tāme.",
 };
 
 export default function ServicesPage() {
@@ -109,6 +110,93 @@ export default function ServicesPage() {
                                 <p className="text-base font-bold leading-relaxed text-card-foreground group-hover:text-primary transition-colors">{step}</p>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-background py-16 lg:py-20 border-t border-border">
+                <div className="container mx-auto px-4 md:px-6">
+                    <div className="mb-12 max-w-3xl">
+                        <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+                            <span className="w-8 h-[2px] bg-primary" /> Materiāli
+                        </p>
+                        <h2 className="mt-3 text-3xl font-black tracking-tight text-foreground sm:text-5xl">
+                            Jumtu segumu izvēle: metāls, dakstiņi un bitumens
+                        </h2>
+                        <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                            Strādājam ar visiem populārākajiem jumta seguma materiāliem Latvijā. Konkrētu risinājumu iesakām pēc jumta slīpuma, konstrukcijas stāvokļa un budžeta.
+                        </p>
+                    </div>
+                    <div className="grid gap-6 md:grid-cols-2">
+                        <article className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+                            <h3 className="text-xl font-bold text-card-foreground">Metāla jumti – valcprofils un dakstiņprofils</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                Metāla jumti ir populārs un izturīgs risinājums Latvijas klimatam. Piedāvājam valcprofila un dakstiņprofila montāžu, klasiskos skārda jumtus un pilnu skārdnieka darbu komplektu – skursteņa pieslēgumi, parapets, vējmalas, ventilējamās kores un sniega barjeras.
+                            </p>
+                        </article>
+                        <article className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+                            <h3 className="text-xl font-bold text-card-foreground">Dakstiņu jumti – māla, betona, keramikas</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                Māla, betona un keramikas dakstiņi labi iederas ilgtermiņa projektos, kuros svarīga akustika, ugunsdrošība un klasiskas fasādes proporcijas. Veicam pilnu dakstiņu jumta montāžu, ieskaitot latojumu, plēves un visus pieslēgumus.
+                            </p>
+                        </article>
+                        <article className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+                            <h3 className="text-xl font-bold text-card-foreground">Bitumena šindeļi un mīkstais jumts</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                Bitumena šindeļi ir laba izvēle privātmājām ar sarežģītāku jumta ģeometriju. Veicam mīkstā jumta seguma montāžu ar atbilstošu apakšklāju, ventilāciju un drošības elementiem.
+                            </p>
+                        </article>
+                        <article className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+                            <h3 className="text-xl font-bold text-card-foreground">Plakanie un lēzenie jumti – hidroizolācija</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                Plakaniem un lēzeniem jumtiem izmantojam bitumena ruļļmateriālus, PVC un poliuretāna membrānas. Piemērots risinājums garāžām, saimniecības ēkām, daudzdzīvokļu namiem un komercobjektiem.
+                            </p>
+                        </article>
+                        <article className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+                            <h3 className="text-xl font-bold text-card-foreground">Bēniņu siltināšana ar ekovati</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                Ekovate ir videi draudzīgs un efektīvs siltinājums Latvijas klimatam. Veicam bēniņu, slīpo plakņu un grīdu siltināšanu, nodrošinot pareizu biezumu, gaisa necaurlaidību un mitruma kontroli.
+                            </p>
+                        </article>
+                        <article className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+                            <h3 className="text-xl font-bold text-card-foreground">Noteksistēmas un skārdnieka darbi</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                Pilna noteksistēmu montāža un remonts, ūdens novadīšanas plānošana, skursteņu apdare, parapeti, vējmalas, jumta logu uzstādīšana un sniega barjeru montāža.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-muted/10 py-16 lg:py-20 border-y border-border">
+                <div className="container mx-auto px-4 md:px-6">
+                    <div className="mb-10 max-w-3xl">
+                        <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+                            <span className="w-8 h-[2px] bg-primary" /> Jumtu tipi
+                        </p>
+                        <h2 className="mt-3 text-3xl font-black tracking-tight text-foreground sm:text-5xl">
+                            Slīpie, lēzenie un plakanie jumti
+                        </h2>
+                    </div>
+                    <div className="grid gap-6 md:grid-cols-3">
+                        <div className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+                            <h3 className="text-lg font-bold text-card-foreground">Slīpie jumti</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                Divslīpju, gūžas, mansards un sarežģītākas konstrukcijas privātmājām. Strādājam ar metāla segumiem, dakstiņiem un bitumena šindeļiem.
+                            </p>
+                        </div>
+                        <div className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+                            <h3 className="text-lg font-bold text-card-foreground">Lēzenie jumti</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                Lēzeniem jumtiem izmantojam bitumena ruļļmateriālus, valcprofila skārdu vai membrānas atkarībā no slīpuma un konstrukcijas.
+                            </p>
+                        </div>
+                        <div className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+                            <h3 className="text-lg font-bold text-card-foreground">Plakanie jumti</h3>
+                            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                Daudzdzīvokļu namiem, komercobjektiem un garāžām – PVC un poliuretāna membrānas, bitumena ruļļu hidroizolācija un mezglu izbūve.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>

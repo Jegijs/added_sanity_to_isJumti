@@ -7,8 +7,9 @@ import SocialLinks from "@/components/shared/SocialLinks";
 import { CONTACT_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-    title: "Kontakti | IS JUMTI",
-    description: "Sazinieties ar IS JUMTI par jumta montāžu, remontu, siltināšanu vai tāmes sagatavošanu.",
+    title: "Bezmaksas tāme – jumiķi Jelgavā un visā Latvijā",
+    description:
+        "Sazinieties ar IS JUMTI – bezmaksas apsekošana un tāme 24h laikā. Jumtu darbi Jelgavā, Rīgā, Pierīgā, Zemgalē un visā Latvijā.",
 };
 
 export default function ContactPage() {
