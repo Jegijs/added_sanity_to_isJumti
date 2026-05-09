@@ -166,21 +166,6 @@ export const galleryProjects = [
     },
 ];
 
-export const galleryQualityPoints = [
-    {
-        title: "Īsti objekti",
-        text: "Galerijā izmantojam darbu foto no IS JUMTI objektiem, nevis abstraktus materiālu katalogus.",
-    },
-    {
-        title: "Saprotams konteksts",
-        text: "Pie katra darba norādām objekta tipu, reģionu un galveno paveikto darbu, lai salīdzināšana būtu vieglāka.",
-    },
-    {
-        title: "Detaļas pirms efekta",
-        text: "Jumtam svarīgākais ir neredzamie mezgli: ventilācija, pieslēgumi, notekas, stiprinājumi un drošības elementi.",
-    },
-];
-
 export const pricingFactors = [
     {
         title: "Jumta platība un ģeometrija",

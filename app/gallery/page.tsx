@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import ContactSection from "@/components/sections/ContactSection";
-import { galleryProjects, galleryQualityPoints } from "@/lib/site-content";
+import { galleryProjects } from "@/lib/site-content";
 
 export const metadata: Metadata = {
     title: "Galerija | IS JUMTI",
@@ -64,22 +64,6 @@ export default function GalleryPage() {
                                     <h2 className="mt-4 text-xl font-bold tracking-tight text-card-foreground group-hover:text-primary transition-colors">{project.title}</h2>
                                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.work}</p>
                                 </div>
-                            </article>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-background pb-14 lg:pb-18 border-b border-border">
-                <div className="container mx-auto px-4 md:px-6">
-                    <div className="grid gap-4 border-t border-border/60 pt-8 md:grid-cols-3">
-                        {galleryQualityPoints.map((item) => (
-                            <article key={item.title} className="rounded-xl border border-border/50 bg-card p-6 shadow-sm hover:border-primary/30 transition-colors">
-                                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                    <CheckCircle2 className="h-5 w-5" />
-                                </div>
-                                <h3 className="text-lg font-bold text-card-foreground">{item.title}</h3>
-                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                             </article>
                         ))}
                     </div>
