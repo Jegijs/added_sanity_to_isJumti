@@ -9,7 +9,6 @@ import { localBusinessSchema, jsonLd } from "@/lib/schema";
 
 const CookieConsent = dynamic(() => import("@/components/shared/CookieConsent"));
 const WhatsAppButton = dynamic(() => import("@/components/shared/WhatsAppButton"));
-const LeadModal = dynamic(() => import("@/components/shared/LeadModal"));
 const MobileStickyCTA = dynamic(() => import("@/components/shared/MobileStickyCTA"));
 
 import "./globals.css";
@@ -78,7 +77,6 @@ export default function RootLayout({
         </main>
 
         <Footer />
-        <LeadModal />
         <MobileStickyCTA />
         <WhatsAppButton />
         <Toaster />
