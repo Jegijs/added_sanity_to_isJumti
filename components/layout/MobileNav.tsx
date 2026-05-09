@@ -56,13 +56,13 @@ export default function MobileNav() {
                     </div>
 
                     {/* Links */}
-                    <div className="flex-1 min-h-0 overflow-y-auto py-3 px-3">
-                        <nav className="flex flex-col gap-0.5">
+                    <div className="flex-1 min-h-0 overflow-y-auto flex items-center py-4 px-3">
+                        <nav className="flex flex-col gap-1 w-full">
                             {NAVIGATION_LINKS.map((item) => (
                                 <SheetClose asChild key={item.href}>
                                     <Link
                                         href={item.href}
-                                        className="block text-base font-bold text-white hover:bg-white/10 rounded-lg px-4 py-2.5 transition-colors"
+                                        className="block text-xl font-bold text-white hover:bg-white/10 rounded-lg px-4 py-3 transition-colors"
                                     >
                                         {item.name}
                                     </Link>
