@@ -9,6 +9,8 @@ export const localBusinessSchema = {
     name: "IS JUMTI",
     legalName: CONTACT_INFO.company.legalName,
     url: SITE_URL,
+    logo: `${SITE_URL}/icon.png`,
+    image: `${SITE_URL}/icon.png`,
     telephone: CONTACT_INFO.phone,
     email: CONTACT_INFO.email,
     description:
