@@ -125,6 +125,7 @@ export default function Hero() {
                                         alt={slide.alt}
                                         fill
                                         priority={i === 0}
+                                        fetchPriority={i === 0 ? "high" : "auto"}
                                         loading={i === 0 ? "eager" : "lazy"}
                                         sizes="(max-width: 1024px) 100vw, 640px"
                                         quality={i === 0 ? 75 : 65}
