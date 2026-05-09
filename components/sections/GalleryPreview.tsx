@@ -48,8 +48,8 @@ export default function GalleryPreview() {
                                     src={project.src}
                                     alt={project.title}
                                     fill
-                                    sizes="(max-width: 768px) 100vw, 33vw"
-                                    quality={70}
+                                    sizes="(max-width: 768px) 50vw, 450px"
+                                    quality={65}
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500 mix-blend-overlay" />

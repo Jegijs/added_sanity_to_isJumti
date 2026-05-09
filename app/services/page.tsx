@@ -69,8 +69,8 @@ export default function ServicesPage() {
                                             src={service.image}
                                             alt={service.title}
                                             fill
-                                            sizes="(max-width: 768px) 100vw, 33vw"
-                                            quality={70}
+                                            sizes="(max-width: 768px) 50vw, 450px"
+                                            quality={65}
                                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
                                         <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />

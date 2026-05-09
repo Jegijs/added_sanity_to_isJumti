@@ -125,7 +125,9 @@ export default function Hero() {
                                         alt={slide.alt}
                                         fill
                                         priority={i === 0}
-                                        sizes="(max-width: 1024px) 100vw, 50vw"
+                                        loading={i === 0 ? "eager" : "lazy"}
+                                        sizes="(max-width: 1024px) 100vw, 640px"
+                                        quality={i === 0 ? 75 : 65}
                                         className="object-cover"
                                     />
                                 </div>

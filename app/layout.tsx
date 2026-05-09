@@ -49,10 +49,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="lv" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://www.isjumti.lv" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.isjumti.lv" />
-      </head>
       <body className={`${inter.className} flex min-h-screen flex-col`}>
         <Header />
 

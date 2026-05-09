@@ -55,8 +55,8 @@ export default function ServicesGrid() {
                                         src={service.src}
                                         alt={service.title}
                                         fill
-                                        sizes="(max-width: 640px) 100vw, 200px"
-                                        quality={70}
+                                        sizes="(max-width: 640px) 50vw, 350px"
+                                        quality={65}
                                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
