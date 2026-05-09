@@ -2,14 +2,10 @@ import {
     Calculator,
     ClipboardCheck,
     Droplets,
-    FileText,
     Hammer,
-    Home,
     Ruler,
-    ShieldCheck,
     Snowflake,
     ThermometerSun,
-    Wrench,
 } from "lucide-react";
 
 export const serviceItems = [
@@ -84,41 +80,6 @@ export const processSteps = [
     "Sagatavojam tāmi ar materiāliem, darbu, loģistiku un riskiem.",
     "Izpildām darbus pa posmiem, uzturot kārtību objektā.",
     "Nododam objektu, izskaidrojam apkopi un garantijas nosacījumus.",
-];
-
-export const serviceProofPoints = [
-    "Bezmaksas sākotnējā konsultācija",
-    "Tāme pēc foto, rasējumiem vai apsekošanas",
-    "Objekti privātmājām, daudzdzīvokļu namiem un komercēkām",
-    "Materiālu izvēle pēc jumta slīpuma, konstrukcijas un budžeta",
-];
-
-export const materialNotes = [
-    {
-        title: "Metāla jumti",
-        text: "Populārs risinājums Latvijas klimatam: izturīgs, salīdzinoši viegls un piemērots gan jaunbūvēm, gan renovācijai.",
-    },
-    {
-        title: "Dakstiņi",
-        text: "Māla un betona dakstiņi labi iederas ilgtermiņa projektos, kuros svarīga akustika, ugunsdrošība un klasiskas fasādes proporcijas.",
-    },
-    {
-        title: "Bitumena segumi",
-        text: "Piemēroti lēzeniem jumtiem, garāžām, saimniecības ēkām un daudzdzīvokļu namiem, ja mezgli tiek izbūvēti precīzi.",
-    },
-    {
-        title: "Siltināšana",
-        text: "2026. gadā arvien svarīgāka ir energoefektivitāte: pareizs biezums, gaisa necaurlaidība, ventilācija un mitruma kontrole.",
-    },
-];
-
-export const qualityChecklist = [
-    "Ventilācijas atstarpes un mitruma režīms",
-    "Pareizs latojums, plēves un stiprinājumi",
-    "Kores, satekas, skursteņu un sienu pieslēgumi",
-    "Noteksistēmas jauda un ūdens novadīšanas virziens",
-    "Sniega barjeras, laipas un drošības elementi",
-    "Objekta sakopšana un atkritumu izvešana",
 ];
 
 export const galleryProjects = [
@@ -358,11 +319,4 @@ export const blogPosts = [
             },
         ],
     },
-];
-
-export const trustItems = [
-    { label: "Oficiāla tāme un līgums", icon: FileText },
-    { label: "Garantija paveiktajiem darbiem", icon: ShieldCheck },
-    { label: "Pieredze privātmājās un komercobjektos", icon: Home },
-    { label: "Remonts, montāža un apkope vienā komandā", icon: Wrench },
 ];

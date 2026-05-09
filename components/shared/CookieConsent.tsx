@@ -53,12 +53,11 @@ export default function CookieConsent() {
         setIsVisible(false);
     };
 
+    const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
     return (
         <>
-            {/* 1. Conditionally render Google Analytics based on consent */}
-            {consentGranted && (
-                <GoogleAnalytics gaId="G-XXXXXXXXXX" /> // <--- Ievieto šeit klienta ID
-            )}
+            {consentGranted && gaId && <GoogleAnalytics gaId={gaId} />}
 
             {/* 2. The Banner UI */}
             <div

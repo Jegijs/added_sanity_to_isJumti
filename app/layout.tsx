@@ -12,16 +12,33 @@ import MobileStickyCTA from "@/components/shared/MobileStickyCTA";
 
 import "./globals.css";
 
-// 1. OPTIMIZĀCIJA: Pievienots 'display: swap' un 'variable', lai teksts parādītos uzreiz
 const inter = Inter({
   subsets: ["latin"],
   display: 'swap',
   variable: '--font-inter',
 });
 
+const SITE_URL = "https://www.isjumti.lv";
+const SITE_TITLE = "Jumiķa Pakalpojumi | IS JUMTI";
+const SITE_DESCRIPTION = "Profesionāla jumtu izbūve, renovācija un siltināšana visā Latvijā.";
+
 export const metadata: Metadata = {
-  title: "Jumiķa Pakalpojumi | IS JUMTI",
-  description: "Profesionāla jumtu izbūve, renovācija un siltināšana.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: "%s | IS JUMTI" },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: "IS JUMTI",
+    locale: "lv_LV",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
@@ -31,11 +48,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="lv" className="scroll-smooth">
-      {/* 2. OPTIMIZĀCIJA: 'min-h-screen flex flex-col' garantē, ka Footer vienmēr ir apakšā */}
       <body className={`${inter.className} flex min-h-screen flex-col`}>
         <Header />
 
-        {/* 'flex-1' liek saturam aizņemt visu brīvo vietu */}
         <main className="flex-1">
           {children}
         </main>
