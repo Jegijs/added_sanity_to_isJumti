@@ -4,7 +4,13 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 
 import ContactSection from "@/components/sections/ContactSection";
-import { galleryProjects } from "@/lib/site-content";
+import { client } from "@/sanity/lib/client"; 
+import imageUrlBuilder from "@sanity/image-url";
+
+const builder = imageUrlBuilder(client);
+function urlFor(source: any) {
+    return builder.image(source);
+}
 
 export const metadata: Metadata = {
     title: "Paveiktie jumtu darbi un projekti Latvijā",
@@ -12,9 +18,34 @@ export const metadata: Metadata = {
         "Paveiktie IS JUMTI darbi: jumtu montāža un renovācija privātmājām, daudzdzīvokļu namiem un komercobjektiem visā Latvijā. Metāla, dakstiņu un bitumena segumi.",
 };
 
-export default function GalleryPage() {
+// Modeled explicitly to match your exact roofType schema structure
+interface SanityRoofGalleryCard {
+    _id: string;
+    title: string;
+    slug: { current: string };
+    images?: Array<{
+        asset: { _ref: string };
+        alt?: string; // Captures your custom alt field
+    }>;
+}
+
+export default async function GalleryPage() {
+    // Fetches the exact properties from your schema definition
+    const fetchQuery = `*[_type == "roofType"][0...6]{
+        _id,
+        title,
+        slug,
+        images[]{
+            asset,
+            alt
+        }
+    }`;
+    
+    const liveGalleries: SanityRoofGalleryCard[] = await client.fetch(fetchQuery);
+
     return (
         <div className="bg-background">
+            {/* Header Section */}
             <section className="bg-foreground text-background py-16 lg:py-24 relative overflow-hidden">
                 <div className="absolute inset-0 bg-roof-pattern opacity-[0.05] pointer-events-none" />
                 <div className="container mx-auto px-4 md:px-6 relative">
@@ -29,49 +60,61 @@ export default function GalleryPage() {
                             Rādām privātmāju, daudzdzīvokļu namu, komercobjektu un siltināšanas darbus ar īsu
                             kontekstu par paveikto, atrašanās vietu un izmantoto risinājumu.
                         </p>
-                        <div className="mt-8 flex flex-wrap gap-3 text-sm font-bold text-background">
-                            {["Privātmājas", "Daudzdzīvokļu nami", "Komercobjekti", "Siltināšana"].map((item) => (
-                                <span key={item} className="rounded-full border border-background/20 px-5 py-2.5 bg-background/5 hover:bg-background/10 transition-colors">
-                                    {item}
-                                </span>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </section>
 
+            {/* Grid Section displaying your 6 categories */}
             <section className="bg-background py-14 lg:py-18 relative">
                 <div className="absolute inset-0 bg-muted/20 skew-y-1 transform -z-10" />
                 <div className="container mx-auto px-4 md:px-6 relative">
                     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                        {galleryProjects.map((project) => (
-                            <article key={project.title} className="group overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm hover:shadow-md transition-all hover:border-primary/30">
-                                <div className="relative aspect-[4/3] bg-muted overflow-hidden">
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill
-                                        sizes="(max-width: 768px) 50vw, 450px"
-                                        quality={65}
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-                                </div>
-                                <div className="p-6">
-                                    <div className="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-widest">
-                                        <span className="text-primary">{project.category}</span>
-                                        <span className="text-muted-foreground/50">/</span>
-                                        <span className="text-muted-foreground">{project.location}</span>
-                                    </div>
-                                    <h2 className="mt-4 text-xl font-bold tracking-tight text-card-foreground group-hover:text-primary transition-colors">{project.title}</h2>
-                                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.work}</p>
-                                </div>
-                            </article>
-                        ))}
+                        {liveGalleries.map((gallery) => {
+                            // Extract the very first uploaded image from the list to serve as the cover card
+                            const coverImage = gallery.images && gallery.images.length > 0 ? gallery.images[0] : null;
+
+                            return (
+                                <Link 
+                                    href={`/gallery/${gallery.slug.current}`} 
+                                    key={gallery._id}
+                                    className="group overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm hover:shadow-md transition-all hover:border-primary/30 block"
+                                >
+                                    <article>
+                                        <div className="relative aspect-[4/3] bg-muted overflow-hidden">
+                                            {coverImage ? (
+                                                <Image
+                                                    src={urlFor(coverImage).width(600).height(450).url()}
+                                                    // Pulls your customized alt string, falling back to the title if left empty
+                                                    alt={coverImage.alt || gallery.title}
+                                                    fill
+                                                    sizes="(max-width: 768px) 50vw, 450px"
+                                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                                />
+                                            ) : (
+                                                <div className="flex items-center justify-center h-full text-muted-foreground/50 text-sm">Nav pievienotu attēlu</div>
+                                            )}
+                                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                                        </div>
+                                        <div className="p-6">
+                                            <div className="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-widest">
+                                                <span className="text-primary">Skatīt Galeriju</span>
+                                            </div>
+                                            <h2 className="mt-2 text-xl font-bold tracking-tight text-card-foreground group-hover:text-primary transition-colors">
+                                                {gallery.title}
+                                            </h2>
+                                            <p className="mt-2 text-sm text-muted-foreground flex items-center gap-1">
+                                                Kopā attēli: {gallery.images ? gallery.images.length : 0} <ArrowRight className="h-3 w-3 inline" />
+                                            </p>
+                                        </div>
+                                    </article>
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
 
+            {/* CTA and Contact Components */}
             <section className="bg-primary py-16 text-primary-foreground relative overflow-hidden">
                 <div className="absolute inset-0 bg-roof-pattern opacity-10 pointer-events-none" />
                 <div className="container mx-auto flex flex-col gap-6 px-4 md:px-6 lg:flex-row lg:items-center lg:justify-between relative">
