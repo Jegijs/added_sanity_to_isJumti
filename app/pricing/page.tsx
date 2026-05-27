@@ -101,7 +101,7 @@ export default function PricingPage() {
                 </div>
             </section>
 
-            <section className="bg-background py-16 lg:py-24 relative">
+           <section className="bg-background py-16 lg:py-24 relative">
                 <div className="absolute inset-0 bg-muted/20 skew-y-1 transform -z-10" />
                 <div className="container mx-auto px-4 md:px-6 relative">
                     <div className="mb-12 max-w-3xl">
@@ -112,11 +112,21 @@ export default function PricingPage() {
                             Kāpēc jumti ar līdzīgu platību var maksāt atšķirīgi.
                         </h2>
                     </div>
+                    {/* Fixed Card Layout with uniform grid matching styling */}
                     <div className="grid gap-6 md:grid-cols-2">
                         {pricingFactors.map((item) => (
-                            <article key={item.title} className="rounded-2xl border border-border/50 bg-card p-6 shadow-sm hover:shadow-md transition-all hover:border-primary/30">
-                                <h3 className="text-xl font-bold text-card-foreground">{item.title}</h3>
-                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                            <article 
+                                key={item.title} 
+                                className="flex flex-col justify-between rounded-2xl border border-border/50 bg-card p-6 shadow-sm hover:shadow-md transition-all hover:border-primary/30 h-full"
+                            >
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-bold text-card-foreground">
+                                        {item.title}
+                                    </h3>
+                                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                        {item.text}
+                                    </p>
+                                </div>
                             </article>
                         ))}
                     </div>
