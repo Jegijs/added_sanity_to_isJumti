@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+// Importējam Next.js Script komponenti
+import Script from "next/script"; 
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -66,6 +68,20 @@ export default function RootLayout({
   return (
     <html lang="lv" className="scroll-smooth">
       <body className={`${inter.className} flex min-h-screen flex-col`}>
+        {/* Hotjar izsekošanas kods ar tavu ID 847712 */}
+        <Script id="hotjar-setup" strategy="afterInteractive">
+          {`
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:847712,hjsv:6};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+          `}
+        </Script>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={jsonLd(localBusinessSchema)}
