@@ -79,7 +79,7 @@ export default function CookieConsent() {
                             </h3>
                             <p className="text-sm text-slate-600 leading-relaxed max-w-2xl">
                                 Mēs izmantojam sīkdatnes (cookies), lai analizētu vietnes plūsmu un uzlabotu lietotāja pieredzi.
-                                Nospiežot &quot;Piekrītu&quot;, jūs atļaujat mums izmantot Google Analytics.
+                                Nospiežot &quot;Piekrītu&quot;, jūs atļaujat mums izmantot Google Analytics un HotJar.
                             </p>
                         </div>
                     </div>
