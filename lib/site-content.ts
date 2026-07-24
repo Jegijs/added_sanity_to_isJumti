@@ -44,7 +44,7 @@ export const serviceItems = [
         details:
             "Strādājam ar metāldakstiņu, valcprofilu, trapecveida loksnēm, skārdu, māla un betona dakstiņiem, bezazbesta šīferi, šindeļiem un kausējamiem bitumena segumiem.",
         icon: Hammer,
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
+        image: "",
     },
     {
         title: "Tāmēšana",
@@ -53,7 +53,7 @@ export const serviceItems = [
         details:
             "Tāmē iekļaujam segumu, stiprinājumus, noteksistēmas, drošības elementus, apdares detaļas un iespējamos riskus, lai budžets būtu saprotams pirms darbu sākuma.",
         icon: Calculator,
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/311005664_521400449994359_8064247804212030749_n-1-600x800.jpg",
+        image: "",
     },
     {
         title: "Jumta risinājuma plānošana",
@@ -62,7 +62,7 @@ export const serviceItems = [
         details:
             "Palīdzam izvērtēt slīpumu, konstrukciju nestspēju, ventilāciju, siltinājuma slāņus un notekūdens novadīšanu, lai jumts kalpotu ilgi.",
         icon: Ruler,
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/310536736_521400699994334_5860770553268751557_n-1-1067x800.jpg",
+        image: "",
     },
     {
         title: "Jumtu inspekcija",
@@ -71,7 +71,7 @@ export const serviceItems = [
         details:
             "Pārbaudām segumu, skārda detaļas, savienojumus, mitruma pazīmes, noteksistēmas un ventilāciju. Pēc apsekošanas iesakām prioritātes.",
         icon: ClipboardCheck,
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/311005664_521400449994359_8064247804212030749_n-1-600x800.jpg",
+        image: "",
     },
     {
         title: "Sniega un ledus noņemšana",
@@ -80,7 +80,7 @@ export const serviceItems = [
         details:
             "Īpaši svarīgi lielām plaknēm, daudzdzīvokļu namiem, ražošanas ēkām un ēkām ar aktīvu gājēju plūsmu gar fasādi.",
         icon: Snowflake,
-        image: "https://www.isjumti.lv/wp-content/uploads/2025/01/5976776786199034863-1200x800.jpeg",
+        image: "",
     },
     {
         title: "Noteku sistēmas",
@@ -89,7 +89,7 @@ export const serviceItems = [
         details:
             "Uzstādām renes, caurules, sniega barjeras un skārda pieslēgumus. Veicam arī sezonālu tīrīšanu un bojātu posmu nomaiņu.",
         icon: Droplets,
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/450512551_1004194185048314_1571388777996338156_n-1-1200x800.jpg",
+        image: "",
     },
     {
         title: "Ekovate, akmensvate un minerālvate",
@@ -98,7 +98,7 @@ export const serviceItems = [
         details:
             "Izvēlamies materiālu pēc konstrukcijas, mitruma režīma, ugunsdrošības prasībām un vēlamās siltumpretestības. Ekovate labi aizpilda sarežģītas vietas un samazina siltuma zudumus.",
         icon: ThermometerSun,
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/ekovate1-600x800.jpg",
+        image: "",
     },
 ];
 

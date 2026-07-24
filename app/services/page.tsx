@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import metalajumti from "@/components/sections/previewImages/metalajumti.jpg";
 
 import ContactSection from "@/components/sections/ContactSection";
 import { processSteps, serviceItems } from "@/lib/site-content";
@@ -39,7 +40,7 @@ export default function ServicesPage() {
                     </div>
                     <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted border border-border/20 shadow-2xl">
                         <Image
-                            src="https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg"
+                            src={metalajumti}
                             alt="IS JUMTI jumta renovācijas darbi"
                             fill
                             priority

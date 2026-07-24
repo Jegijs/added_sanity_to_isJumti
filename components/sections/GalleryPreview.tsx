@@ -1,22 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import metalajumti from "./previewImages/metalajumti.jpg";
+import kokaKonstrukcia from "./previewImages/kokaKonstrukcia.jpg";
+import daudzdz from "./previewImages/daudzdz.jpg";
+import saimn from "./previewImages/saimn.jpg";
 
 const projects = [
     {
         title: "Privātmājas jumta renovācija",
         meta: "Metāla segums · Pierīga",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
+        src: metalajumti,
     },
     {
         title: "Daudzdzīvokļu nama jumta darbi",
         meta: "Kausējamais jumts · Rīga",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/450512551_1004194185048314_1571388777996338156_n-1-1200x800.jpg",
+        src: daudzdz,
     },
     {
-        title: "Jumta konstrukcijas izbūve",
-        meta: "Koka konstrukcija · Jelgava",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/310536736_521400699994334_5860770553268751557_n-1-1067x800.jpg",
+        title: "Saimniecības ēkas jumta darbi",
+        meta: "Saimniecības ēku jumti · Vidzeme",
+        src: saimn,
     },
 ];
 

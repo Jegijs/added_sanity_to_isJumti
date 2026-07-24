@@ -4,27 +4,28 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { CONTACT_INFO } from "@/lib/constants";
+
+
 
 const heroSlides = [
     {
         id: 1,
         category: "Privātmājas",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
-        alt: "Privātmājas jumta renovācija",
+        src: "/images/privatmaja.jpg",
+        alt: "Privātmāju jumtu darbi",
     },
     {
         id: 2,
         category: "Daudzdzīvokļu nami",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/450512551_1004194185048314_1571388777996338156_n-1-1200x800.jpg",
-        alt: "Daudzdzīvokļu mājas jumta renovācija",
+        src: "/images/daudzdz.jpg",
+        alt: "Daudzdzīvokļu mājas jumtu darbi",
     },
     {
         id: 3,
-        category: "Siltināšana",
-        src: "https://www.isjumti.lv/wp-content/uploads/2025/01/5976776786199034863-1200x800.jpeg",
-        alt: "Jumta siltināšanas un renovācijas darbi",
+        category: "Angāri un Saimniecības ēkas",
+        src: "/images/angar.jpg",
+        alt: "Angāru un saimniecības ēku jumta darbi",
     },
 ];
 
@@ -34,7 +35,7 @@ const stats = [
     { value: "30", label: "Gadu garantija" },
 ];
 
-const SLIDE_DELAY = 6000;
+const SLIDE_DELAY = 3000;
 
 export default function Hero() {
     const [current, setCurrent] = React.useState(0);

@@ -1,33 +1,47 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+
+import vides from "./previewImages/vides.avif";
+import eroof from "./previewImages/eroof.avif";
+import ramirent from "./previewImages/ramirent.avif";
+import timbero from "./previewImages/timbero.avif";
+import essve from "./previewImages/essve.avif";
+import stats from "./previewImages/stats.avif";
+import RORO from "./previewImages/RORO.jpg";
+
+
 
 const partners = [
     {
-        name: "Ruukki",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/Screenshot-2024-07-29-at-07-38-39-Jumtu-buvnieciba-un-renovacija-IG-Jumti-SIA.png",
+        name: "Vides",
+        src: vides,
     },
     {
-        name: "BMI",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/Screenshot-2024-07-29-at-07-39-41-Jumtu-buvnieciba-un-renovacija-IG-Jumti-SIA.png",
+        name: "Essve",
+        src: essve,
     },
     {
-        name: "Velux",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/07/Screenshot-2024-07-29-at-07-39-56-Jumtu-buvnieciba-un-renovacija-IG-Jumti-SIA.png",
+        name: "Timbero",
+        src: timbero,
     },
     {
         name: "Stats Rent",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/08/Screenshot-2024-08-03-at-16-15-43-STATS-Rent-BUVTEHNIKAS-NOMA.png",
+        src: stats,
     },
     {
         name: "Eroof",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/08/eroof_jumtu_segumi_logo.jpg",
+        src: eroof,
+    },
+    {
+        name: "RORO",
+        src: RORO,
     },
     {
         name: "Ramirent",
-        src: "https://www.isjumti.lv/wp-content/uploads/2024/08/Screenshot-2024-08-03-at-16-03-53-Kontakti-Ramirent-Latvija.png",
+        src: ramirent,
     },
 ];
 
-function PartnerLogo({ name, src }: { name: string; src: string }) {
+function PartnerLogo({ name, src }: { name: string; src: StaticImageData }) {
     return (
         <div className="relative h-16 w-44 shrink-0 opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0 sm:h-20 sm:w-56">
             <Image src={src} alt={`${name} logo`} fill sizes="(max-width: 640px) 176px, 224px" className="object-contain" />

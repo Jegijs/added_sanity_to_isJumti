@@ -52,24 +52,52 @@ export default function LeadForm() {
         },
     });
 
-    async function onSubmit(values: z.infer<typeof formSchema>) {
-        setIsSubmitting(true);
+   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
 
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+        const formData = new FormData();
+        formData.append("access_key", "3e5721c8-c54f-4f43-9f52-da3c0addea3f"); // <-- Insert key here
+        formData.append("subject", `Jauns pieteikums no: ${values.name}`);
+        formData.append("Vārds", values.name);
+        formData.append("Tālrunis", values.phone);
+        formData.append("E-pasts", values.email || "Nav norādīts");
+        formData.append("Vieta", values.location || "Nav norādīts");
+        formData.append("Pakalpojums", values.serviceType);
+        formData.append("Ziņa", values.message || "-");
 
+        // Attach photo if uploaded
         const photoInput = document.getElementById("roof-photo") as HTMLInputElement | null;
-        const photoName = photoInput?.files?.[0]?.name;
+        if (photoInput?.files?.[0]) {
+            formData.append("attachment", photoInput.files[0]);
+        }
 
-        console.log("Saņemtais pieteikums:", { ...values, photoName });
-
-        toast.success("Pieteikums nosūtīts", {
-            description: "Paldies. Sazināsimies tuvākajā laikā.",
-            duration: 5000,
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData,
         });
 
-        form.reset();
+        const data = await response.json();
+
+        if (data.success) {
+            toast.success("Pieteikums nosūtīts!", {
+                description: "Paldies. Sazināsimies tuvākajā laikā.",
+                duration: 5000,
+            });
+            form.reset();
+        } else {
+            toast.error("Kļūda nosūtot pieteikumu", {
+                description: "Lūdzu, mēģiniet vēlreiz vai zvaniet mums.",
+            });
+        }
+    } catch (error) {
+        toast.error("Tīkla kļūda", {
+            description: "Mēģiniet vēlreiz vēlāk.",
+        });
+    } finally {
         setIsSubmitting(false);
     }
+}
 
     return (
         <div className="p-4 sm:p-6 lg:p-7">
