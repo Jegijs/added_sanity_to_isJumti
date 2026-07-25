@@ -12,20 +12,56 @@ const heroSlides = [
     {
         id: 1,
         category: "Privātmājas",
-        src: "/images/privatmaja.jpg",
+        src: "/images/pirmaisPrivat.jpg",
         alt: "Privātmāju jumtu darbi",
     },
     {
         id: 2,
-        category: "Daudzdzīvokļu nami",
-        src: "/images/daudzdz.jpg",
-        alt: "Daudzdzīvokļu mājas jumtu darbi",
+        category: "Privātmājas",
+        src: "/images/otraisPrivat.jpg",
+        alt: "Privātmāju jumtu darbi",
     },
     {
         id: 3,
+        category: "Privātmājas",
+        src: "/images/tresaisPrivat.jpg",
+        alt: "Privātmāju jumtu darbi",
+    },
+    {
+        id: 4,
         category: "Angāri un Saimniecības ēkas",
-        src: "/images/angar.jpg",
+        src: "/images/pirmaisAng.jpg",
         alt: "Angāru un saimniecības ēku jumta darbi",
+    },
+    {
+        id: 5,
+        category: "Angāri un Saimniecības ēkas",
+        src: "/images/otraisAng.jpg",
+        alt: "Angāru un saimniecības ēku jumta darbi",
+    },
+    {
+        id: 6,
+        category: "Angāri un Saimniecības ēkas",
+        src: "/images/tresaisAng.jpg",
+        alt: "Angāru un saimniecības ēku jumta darbi",
+    },
+    {
+        id: 7,
+        category: "Daudzdzīvokļu nami",
+        src: "/images/pirmaisDaudz.jpg",
+        alt: "Daudzdzīvokļu namu jumta darbi",
+    },
+    {
+        id: 8,
+        category: "Daudzdzīvokļu nami",
+        src: "/images/otraisDaudz.jpg",
+        alt: "Daudzdzīvokļu namu jumta darbi",
+    },
+    {
+        id: 9,
+        category: "Daudzdzīvokļu nami",
+        src: "/images/tresaisDaudz.jpg",
+        alt: "Daudzdzīvokļu namu jumta darbi",
     },
 ];
 

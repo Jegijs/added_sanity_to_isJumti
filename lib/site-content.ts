@@ -44,7 +44,7 @@ export const serviceItems = [
         details:
             "Strādājam ar metāldakstiņu, valcprofilu, trapecveida loksnēm, skārdu, māla un betona dakstiņiem, bezazbesta šīferi, šindeļiem un kausējamiem bitumena segumiem.",
         icon: Hammer,
-        image: "",
+        image: "/images/jumtuMontaza.png",
     },
     {
         title: "Tāmēšana",
@@ -53,7 +53,7 @@ export const serviceItems = [
         details:
             "Tāmē iekļaujam segumu, stiprinājumus, noteksistēmas, drošības elementus, apdares detaļas un iespējamos riskus, lai budžets būtu saprotams pirms darbu sākuma.",
         icon: Calculator,
-        image: "",
+        image: "/images/tamesanas.png",
     },
     {
         title: "Jumta risinājuma plānošana",
@@ -62,7 +62,7 @@ export const serviceItems = [
         details:
             "Palīdzam izvērtēt slīpumu, konstrukciju nestspēju, ventilāciju, siltinājuma slāņus un notekūdens novadīšanu, lai jumts kalpotu ilgi.",
         icon: Ruler,
-        image: "",
+        image: "/images/tamesanas.png",
     },
     {
         title: "Jumtu inspekcija",
@@ -71,7 +71,7 @@ export const serviceItems = [
         details:
             "Pārbaudām segumu, skārda detaļas, savienojumus, mitruma pazīmes, noteksistēmas un ventilāciju. Pēc apsekošanas iesakām prioritātes.",
         icon: ClipboardCheck,
-        image: "",
+        image: "/images/tamesanas.png",
     },
     {
         title: "Sniega un ledus noņemšana",
@@ -80,7 +80,7 @@ export const serviceItems = [
         details:
             "Īpaši svarīgi lielām plaknēm, daudzdzīvokļu namiem, ražošanas ēkām un ēkām ar aktīvu gājēju plūsmu gar fasādi.",
         icon: Snowflake,
-        image: "",
+        image: "/images/sniegs.png",
     },
     {
         title: "Noteku sistēmas",
@@ -89,7 +89,7 @@ export const serviceItems = [
         details:
             "Uzstādām renes, caurules, sniega barjeras un skārda pieslēgumus. Veicam arī sezonālu tīrīšanu un bojātu posmu nomaiņu.",
         icon: Droplets,
-        image: "",
+        image: "/images/notekas.png",
     },
     {
         title: "Ekovate, akmensvate un minerālvate",
@@ -98,7 +98,7 @@ export const serviceItems = [
         details:
             "Izvēlamies materiālu pēc konstrukcijas, mitruma režīma, ugunsdrošības prasībām un vēlamās siltumpretestības. Ekovate labi aizpilda sarežģītas vietas un samazina siltuma zudumus.",
         icon: ThermometerSun,
-        image: "",
+        image: "/images/siltinasana.png",
     },
 ];
 
@@ -116,42 +116,42 @@ export const galleryProjects = [
         category: "Privātmājas",
         location: "Pierīga",
         work: "Metāla segums, skārda detaļas, noteksistēma",
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
+        image: "",
     },
     {
         title: "Daudzdzīvokļu nama jumta darbi",
         category: "Daudzdzīvokļu nami",
         location: "Rīga",
         work: "Kausējamais bitumena segums un mezglu atjaunošana",
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/450512551_1004194185048314_1571388777996338156_n-1-1200x800.jpg",
+        image: "",
     },
     {
         title: "Jumta konstrukcijas izbūve",
         category: "Privātmājas",
         location: "Jelgava",
         work: "Koka konstrukcija, latojums un seguma sagatavošana",
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/310536736_521400699994334_5860770553268751557_n-1-1067x800.jpg",
+        image: "",
     },
     {
         title: "Siltināšanas darbi ar ekovati",
         category: "Siltināšana",
         location: "Zemgale",
         work: "Bēniņu un slīpo plakņu siltināšana",
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/ekovate1-600x800.jpg",
+        image: ".images/siltinana.png",
     },
     {
         title: "Jumta seguma maiņa",
         category: "Privātmājas",
         location: "Latvija",
         work: "Vecā seguma demontāža un jauna seguma montāža",
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/310536736_521400699994334_5860770553268751557_n-1-1067x800.jpg",
+        image: "",
     },
     {
         title: "Komercobjekta jumta apkope",
         category: "Komercobjekti",
         location: "Latvija",
         work: "Inspekcija, remonts un ūdens novadīšanas pārbaude",
-        image: "https://www.isjumti.lv/wp-content/uploads/2025/01/5976776786199034863-1200x800.jpeg",
+        image: "",
     },
 ];
 
@@ -214,7 +214,7 @@ export const blogPosts = [
                 { label: "Novadīšana", text: "Ūdens aiziet prom no pamatiem." },
             ],
         },
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/450512551_1004194185048314_1571388777996338156_n-1-1200x800.jpg",
+        image: "/images/notekas.png",
         sections: [
             {
                 heading: "Kāpēc notekas ir svarīgas",
@@ -253,7 +253,7 @@ export const blogPosts = [
                 { label: "Ventilācija", text: "Palīdz izvadīt lieko mitrumu." },
             ],
         },
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/ekovate1-600x800.jpg",
+        image: "/images/siltinasana.png",
         sections: [
             {
                 heading: "Materiāls ar labu aizpildījumu",
@@ -292,7 +292,7 @@ export const blogPosts = [
                 { label: "Tāme", text: "Atsevišķi redzams darbs, materiāli un papildu riski." },
             ],
         },
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/310536736_521400699994334_5860770553268751557_n-1-1067x800.jpg",
+        image: "/images/tamesanas.png",
         sections: [
             {
                 heading: "Sāciet ar jumta stāvokli",
@@ -331,7 +331,7 @@ export const blogPosts = [
                 { label: "Loģistika", text: "Transports, atkritumi un objekta piekļuve." },
             ],
         },
-        image: "https://www.isjumti.lv/wp-content/uploads/2024/07/449842267_1004194061714993_8696377875127438476_n-1200x800.jpg",
+        image: "/images/jumikisi.png",
         sections: [
             {
                 heading: "Kas veido jumta darbu cenu",
