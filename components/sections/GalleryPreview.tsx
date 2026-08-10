@@ -8,7 +8,7 @@ import saimn from "./previewImages/saimn.jpg";
 
 const projects = [
     {
-        title: "Privātmājas jumta renovācija",
+        title: "Privātmāju jumtu renovācija",
         meta: "Metāla segums · Pierīga",
         src: metalajumti,
     },
