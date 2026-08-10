@@ -18,30 +18,34 @@ export const metadata: Metadata = {
         "Paveiktie IS JUMTI darbi: jumtu montāža un renovācija privātmājām, daudzdzīvokļu namiem un komercobjektiem visā Latvijā. Metāla, dakstiņu un bitumena segumi.",
 };
 
-// Modeled explicitly to match your exact roofType schema structure
+// Modeled explicitly for the new nested schema structure
 interface SanityRoofGalleryCard {
     _id: string;
     title: string;
     slug: { current: string };
-    images?: Array<{
-        asset: { _ref: string };
-        alt?: string; // Captures your custom alt field
+    projects?: Array<{
+        gallery?: Array<{
+            asset: { _ref: string };
+            alt?: string;
+        }>;
     }>;
 }
 
 export default async function GalleryPage() {
-    // Fetches the exact properties from your schema definition
+    // Fetches categories along with their projects' first cover images
     const fetchQuery = `*[_type == "roofType"][0...6]{
         _id,
         title,
         slug,
-        images[]{
-            asset,
-            alt
+        projects[]{
+            gallery[]{
+                asset,
+                alt
+            }
         }
     }`;
     
-    const liveGalleries: SanityRoofGalleryCard[] = await client.fetch(fetchQuery);
+    const liveGalleries: SanityRoofGalleryCard[] = await client.fetch(fetchQuery, {}, { next: { revalidate: 60 } });
 
     return (
         <div className="bg-background">
@@ -64,14 +68,22 @@ export default async function GalleryPage() {
                 </div>
             </section>
 
-            {/* Grid Section displaying your 6 categories */}
+            {/* Grid Section displaying your categories */}
             <section className="bg-background py-14 lg:py-18 relative">
                 <div className="absolute inset-0 bg-muted/20 skew-y-1 transform -z-10" />
                 <div className="container mx-auto px-4 md:px-6 relative">
                     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                         {liveGalleries.map((gallery) => {
-                            // Extract the very first uploaded image from the list to serve as the cover card
-                            const coverImage = gallery.images && gallery.images.length > 0 ? gallery.images[0] : null;
+                            const projects = gallery.projects || [];
+                            
+                            // Extract the very first image of the first project as the category cover card
+                            const coverImage = projects[0]?.gallery?.[0] || null;
+
+                            // Calculate total images across all projects in this category
+                            const totalImages = projects.reduce(
+                                (acc, proj) => acc + (proj.gallery?.length || 0),
+                                0
+                            );
 
                             return (
                                 <Link 
@@ -84,7 +96,6 @@ export default async function GalleryPage() {
                                             {coverImage ? (
                                                 <Image
                                                     src={urlFor(coverImage).width(600).height(450).url()}
-                                                    // Pulls your customized alt string, falling back to the title if left empty
                                                     alt={coverImage.alt || gallery.title}
                                                     fill
                                                     sizes="(max-width: 768px) 50vw, 450px"
@@ -103,7 +114,7 @@ export default async function GalleryPage() {
                                                 {gallery.title}
                                             </h2>
                                             <p className="mt-2 text-sm text-muted-foreground flex items-center gap-1">
-                                                Kopā attēli: {gallery.images ? gallery.images.length : 0} <ArrowRight className="h-3 w-3 inline" />
+                                                Kopā {projects.length} {projects.length === 1 ? 'objekts' : 'objekti'} ({totalImages} bildes) <ArrowRight className="h-3 w-3 inline" />
                                             </p>
                                         </div>
                                     </article>
