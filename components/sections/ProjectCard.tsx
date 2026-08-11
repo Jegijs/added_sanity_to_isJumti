@@ -123,12 +123,6 @@ export default function ProjectCard({ title, images = [] }: ProjectCardProps) {
                 </div>
 
                 <div className="p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                        <h3 className="font-bold text-lg text-card-foreground group-hover:text-primary transition-colors flex items-center gap-1.5">
-                            <MapPin className="w-4 h-4 text-primary shrink-0" />
-                            {title}
-                        </h3>
-                    </div>
                     <p className="text-xs text-muted-foreground mt-3 font-medium">
                         {images.length} {images.length === 1 ? "attēls" : "attēli no leņķiem"}
                     </p>

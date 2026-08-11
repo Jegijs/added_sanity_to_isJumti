@@ -113,9 +113,7 @@ export default async function GalleryPage() {
                                             <h2 className="mt-2 text-xl font-bold tracking-tight text-card-foreground group-hover:text-primary transition-colors">
                                                 {gallery.title}
                                             </h2>
-                                            <p className="mt-2 text-sm text-muted-foreground flex items-center gap-1">
-                                                Kopā {projects.length} {projects.length === 1 ? 'objekts' : 'objekti'} ({totalImages} bildes) <ArrowRight className="h-3 w-3 inline" />
-                                            </p>
+                                            
                                         </div>
                                     </article>
                                 </Link>

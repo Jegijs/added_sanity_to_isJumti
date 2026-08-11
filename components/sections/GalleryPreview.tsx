@@ -9,17 +9,15 @@ import saimn from "./previewImages/saimn.jpg";
 const projects = [
     {
         title: "Privātmāju jumtu renovācija",
-        meta: "Metāla segums · Pierīga",
         src: metalajumti,
     },
     {
         title: "Daudzdzīvokļu nama jumta darbi",
-        meta: "Kausējamais jumts · Rīga",
+
         src: daudzdz,
     },
     {
         title: "Saimniecības ēkas jumta darbi",
-        meta: "Saimniecības ēku jumti · Vidzeme",
         src: saimn,
     },
 ];
@@ -60,7 +58,7 @@ export default function GalleryPreview() {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">{project.title}</h3>
-                                <p className="mt-1.5 text-sm text-muted-foreground">{project.meta}</p>
+    
                             </div>
                         </Link>
                     ))}

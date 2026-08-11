@@ -14,10 +14,8 @@ export default async function RoofGalleryInnerPage({ params }: PageProps) {
     // GROQ QUERY: Explicitly requests projects and their gallery array
     const fetchQuery = `*[_type == "roofType" && slug.current == $slug][0]{
         _id,
-        title,
         projects[]{
             _key,
-            title,
             "slug": slug.current,
             gallery[]{
                 asset,

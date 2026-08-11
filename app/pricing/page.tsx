@@ -66,35 +66,7 @@ export default function PricingPage() {
                             Zemāk redzamas orientējošas izejas cenas. Galīgo summu nosaka jumta platība, materiāla izvēle, konstrukcijas stāvoklis un piekļuves apstākļi – precīzu tāmi sagatavojam pēc apsekošanas.
                         </p>
                     </div>
-                    <div className="overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm">
-                        <table className="w-full text-left text-sm sm:text-base">
-                            <thead className="bg-muted/40 text-foreground">
-                                <tr>
-                                    <th className="px-4 py-4 font-bold sm:px-6">Pakalpojums</th>
-                                    <th className="px-4 py-4 font-bold text-right sm:px-6">Cena</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-border/50">
-                                {[
-                                    { service: "Jumta seguma maiņa (metāla profils, valcprofils)", price: "no 15 €/m²" },
-                                    { service: "Dakstiņu jumta ieklāšana", price: "no 18 €/m²" },
-                                    { service: "Bitumena šindeļu ieklāšana", price: "no 12 €/m²" },
-                                    { service: "Bitumena ruļļu ieklāšana (lēzeniem jumtiem)", price: "no 8 €/m²" },
-                                    { service: "Plakano jumtu hidroizolācija (PVC membrāna)", price: "no 14 €/m²" },
-                                    { service: "Jumta koka konstrukcijas izbūve", price: "no 25 €/m²" },
-                                    { service: "Bēniņu siltināšana ar ekovati", price: "no 5 €/m²" },
-                                    { service: "Noteksistēmas montāža", price: "no 9 €/m" },
-                                    { service: "Sniega barjeru montāža", price: "no 10 €/m" },
-                                    { service: "Jumta apsekošana un tāme", price: "bezmaksas" },
-                                ].map((row) => (
-                                    <tr key={row.service} className="hover:bg-muted/20 transition-colors">
-                                        <td className="px-4 py-4 text-card-foreground sm:px-6">{row.service}</td>
-                                        <td className="px-4 py-4 text-right font-bold text-primary sm:px-6 whitespace-nowrap">{row.price}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                
                     <p className="mt-4 text-xs text-muted-foreground">
                         Cenas norādītas bez PVN un materiāliem. Galīgo izmaksu apstiprinām tāmē pēc objekta informācijas vai apsekošanas.
                     </p>
