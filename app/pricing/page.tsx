@@ -63,12 +63,12 @@ export default function PricingPage() {
                             Jumtu darbu cenas par m²
                         </h2>
                         <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                            Zemāk redzamas orientējošas izejas cenas. Galīgo summu nosaka jumta platība, materiāla izvēle, konstrukcijas stāvoklis un piekļuves apstākļi – precīzu tāmi sagatavojam pēc apsekošanas.
+                            Galīgo summu nosaka jumta platība, materiāla izvēle, konstrukcijas stāvoklis un piekļuves apstākļi – precīzu tāmi sagatavojam pēc apsekošanas.
                         </p>
                     </div>
                 
                     <p className="mt-4 text-xs text-muted-foreground">
-                        Cenas norādītas bez PVN un materiāliem. Galīgo izmaksu apstiprinām tāmē pēc objekta informācijas vai apsekošanas.
+                        Galīgo izmaksu apstiprinām tāmē pēc objekta informācijas vai apsekošanas.
                     </p>
                 </div>
             </section>

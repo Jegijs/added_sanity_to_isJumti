@@ -84,31 +84,38 @@ export default function ProjectCard({ title, images = [] }: ProjectCardProps) {
                     )}
 
                     {/* Expand icon overlay prompt */}
-                    <div className="absolute top-3 right-3 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm z-10">
+                    <div className="absolute top-3 right-3 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm z-20">
                         <Maximize2 className="w-4 h-4" />
                     </div>
 
-                    {/* Carousel Navigation */}
+                    {/* Carousel Navigation - Side Hotspots with Middle Open */}
                     {images.length > 1 && (
                         <>
+                            {/* Left Side Click Zone (35% width) */}
                             <button
                                 type="button"
                                 onClick={prevImage}
-                                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                                className="group/left absolute left-0 top-0 bottom-0 w-[35%] h-full flex items-center justify-start pl-3 z-10 focus:outline-none"
                                 aria-label="Iepriekšējais attēls"
                             >
-                                <ChevronLeft className="w-4 h-4" />
+                                <span className="bg-black/60 text-white p-2 rounded-full backdrop-blur-sm opacity-0 group-hover/left:opacity-100 transition-opacity">
+                                    <ChevronLeft className="w-4 h-4" />
+                                </span>
                             </button>
+
+                            {/* Right Side Click Zone (35% width) */}
                             <button
                                 type="button"
                                 onClick={nextImage}
-                                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                                className="group/right absolute right-0 top-0 bottom-0 w-[35%] h-full flex items-center justify-end pr-3 z-10 focus:outline-none"
                                 aria-label="Nākamais attēls"
                             >
-                                <ChevronRight className="w-4 h-4" />
+                                <span className="bg-black/60 text-white p-2 rounded-full backdrop-blur-sm opacity-0 group-hover/right:opacity-100 transition-opacity">
+                                    <ChevronRight className="w-4 h-4" />
+                                </span>
                             </button>
 
-                            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm z-10">
+                            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/40 px-2.5 py-1 rounded-full backdrop-blur-sm z-10 pointer-events-none">
                                 {images.map((_, idx) => (
                                     <span
                                         key={idx}
@@ -124,7 +131,7 @@ export default function ProjectCard({ title, images = [] }: ProjectCardProps) {
 
                 <div className="p-5 flex-1 flex flex-col justify-between">
                     <p className="text-xs text-muted-foreground mt-3 font-medium">
-                        {images.length} {images.length === 1 ? "attēls" : "attēli no leņķiem"}
+                        {images.length} {images.length === 1 ? "attēls" : "attēli"}
                     </p>
                 </div>
             </div>

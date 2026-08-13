@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 // Importējam Next.js Script komponenti
 import Script from "next/script"; 
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -98,6 +99,7 @@ export default function RootLayout({
         <Toaster />
 
         <CookieConsent />
+        <GoogleAnalytics gaId="G-S979N7E3GV" />
       </body>
     </html>
   );
