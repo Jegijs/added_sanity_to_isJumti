@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { CONTACT_INFO, SOCIAL_LINKS } from "@/lib/constants";
 import Container from "@/components/layout/Container";
 import { TikTokIcon } from "@/components/shared/SocialLinks";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 
 export default function TopNav() {
     return (
@@ -40,9 +40,6 @@ export default function TopNav() {
                             </Link>
                             <Link href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-foreground transition-colors">
                                 <Facebook className="h-3.5 w-3.5" />
-                            </Link>
-                            <Link href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-foreground transition-colors">
-                                <Youtube className="h-3.5 w-3.5" />
                             </Link>
                         </div>
                     </div>

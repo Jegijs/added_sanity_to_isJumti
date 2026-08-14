@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram} from "lucide-react";
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -45,7 +45,7 @@ const links: { key: keyof typeof SOCIAL_LINKS; label: string; Icon: React.Compon
     { key: "tiktok", label: "TikTok", Icon: TikTokIcon },
     { key: "instagram", label: "Instagram", Icon: Instagram },
     { key: "facebook", label: "Facebook", Icon: Facebook },
-    { key: "youtube", label: "YouTube", Icon: Youtube },
+  
 ];
 
 export default function SocialLinks({

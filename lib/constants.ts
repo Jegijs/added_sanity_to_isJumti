@@ -32,5 +32,5 @@ export const SOCIAL_LINKS = {
     tiktok: "https://www.tiktok.com/@isjumti",
     facebook: "https://www.facebook.com/isjumti",
     instagram: "https://www.instagram.com/isjumti",
-    youtube: "https://www.youtube.com/@isjumti",
+
 };

@@ -47,7 +47,6 @@ export const localBusinessSchema = {
         SOCIAL_LINKS.facebook,
         SOCIAL_LINKS.instagram,
         SOCIAL_LINKS.tiktok,
-        SOCIAL_LINKS.youtube,
     ],
     knowsAbout: [
         "Jumtu montāža",
