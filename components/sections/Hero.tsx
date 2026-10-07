@@ -107,7 +107,7 @@ export default function Hero() {
                         </h1>
 
                         <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/90 sm:text-lg">
-                            Metāla jumti, dakstiņi, bitumena šindeļi un plakano jumtu hidroizolācija. Bēniņu siltināšana ar ekovati. 15 gadu pieredze, oficiāla garantija un bezmaksas tāme.
+                            Metāla jumti, dakstiņi, bitumena šindeļi un plakano jumtu hidroizolācija. Bēniņu siltināšana ar ekovati. 20 gadu pieredze, oficiāla garantija uz 50 gadiem un bezmaksas tāme.
                         </p>
 
                         <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-primary-foreground lg:max-w-xl">
